@@ -13,10 +13,10 @@ export default function Header() {
       </div>
 
       <div className="flex p-3 items-center justify-between max-lg:p-1 max-md:hidden">
-        <button className="text-black mr-8 ease-in-out duration-75 hover:border-b-2 font-semibold text-lg border-black">Home</button>
-        <button className="text-black mr-8 ease-in-out duration-75 hover:border-b-2 font-semibold text-lg border-black">Contact</button>
-        <button className="text-black mr-8 ease-in-out duration-75 hover:border-b-2 font-semibold text-lg border-black">About</button>
-        <button className="text-black ease-in-out duration-75 hover:border-b-2 font-semibold text-lg border-black">Sign Up</button>
+        <button className="text-black mr-8 ease-in-out duration-75 hover:border-b-2 text-lg border-black">Home</button>
+        <button className="text-black mr-8 ease-in-out duration-75 hover:border-b-2 text-lg border-black">Contact</button>
+        <button className="text-black mr-8 ease-in-out duration-75 hover:border-b-2 text-lg border-black">About</button>
+        <button className="text-black ease-in-out duration-75 hover:border-b-2 text-lg border-black">Sign Up</button>
       </div>
 
       <div className="flex p-3 items-center justify-between max-md:w-full">
