@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react"
 import fetchDealItems from "@/utils/dataManagement"
 import ItemCard from "../itemCard/itemCard"
+import { nextArrow } from "./showcaseIcons"
+import { prevArrow } from "./showcaseIcons"
 export default function ItemShowcase() {
 
   const [products, setProducts] = useState()
@@ -31,9 +33,9 @@ export default function ItemShowcase() {
         {products && products.map((item) => <ItemCard key={item.deal_id} item={item} page={page} />)}
 
       </div>
-      <div className="flex border-2 flex-row w-full justify-center items-center">
-        <button onClick={() => navigateSliderPage('-')}>Previous</button>
-        <button onClick={() => navigateSliderPage('+')}>Next</button>
+      <div className="flex flex-row w-full justify-around items-center">
+        <button className="p-1 bg-red-800 rounded-full" onClick={() => navigateSliderPage('-')}>{prevArrow}</button>
+        <button className="p-1 bg-red-800 rounded-full" onClick={() => navigateSliderPage('+')}>{nextArrow}</button>
       </div>
     </>
   )
