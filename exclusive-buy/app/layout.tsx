@@ -17,10 +17,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={'bg-white'}>
+      <body className={'bg-white overflow-x-hidden'}>
         <Header />
         <div className="flex">
-          <div>
+          <div className=" max-sm:hidden">
             <NavBar />
           </div>
 
