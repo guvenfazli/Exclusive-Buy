@@ -34,8 +34,8 @@ export default function ItemShowcase() {
 
       </div>
       <div className="flex flex-row w-full justify-around items-center">
-        <button className="p-1 bg-red-800 rounded-full" onClick={() => navigateSliderPage('-')}>{prevArrow}</button>
-        <button className="p-1 bg-red-800 rounded-full" onClick={() => navigateSliderPage('+')}>{nextArrow}</button>
+        <button disabled={page === 0} className="p-1 bg-red-800 rounded-full disabled:bg-red-400" onClick={() => navigateSliderPage('-')}>{prevArrow}</button>
+        <button disabled={page >= 27} className="p-1 bg-red-800 rounded-full disabled:bg-red-400" onClick={() => navigateSliderPage('+')}>{nextArrow}</button>
       </div>
     </>
   )
