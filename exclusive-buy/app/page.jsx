@@ -1,4 +1,5 @@
 import ItemShowcase from "@/components/itemShowcase/itemShowcase"
+import CategoryButtons from "@/components/category/CategoryButtons"
 export default function Home() {
 
 
@@ -10,6 +11,7 @@ export default function Home() {
       </div>
 
       <ItemShowcase />
+      <CategoryButtons />
     </div>
 
   );

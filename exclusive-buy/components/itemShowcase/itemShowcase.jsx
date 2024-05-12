@@ -5,35 +5,38 @@ import ItemCard from "../itemCard/itemCard"
 import { nextArrow } from "./showcaseIcons"
 import { prevArrow } from "./showcaseIcons"
 export default function ItemShowcase() {
-
   const [products, setProducts] = useState()
   const [page, setPage] = useState(0)
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await fetchDealItems()
-      setProducts(data)
+  /*
+    useEffect(() => {
+      async function fetchData() {
+        const data = await fetchDealItems()
+        setProducts(data)
+      }
+  
+      fetchData()
+    }, [])
+  
+    function navigateSliderPage(option) {
+      if (option === '+') {
+        setPage((prev) => prev += 3)
+      } else if (option === '-') {
+        setPage((prev) => prev -= 3)
+      }
     }
-
-    fetchData()
-  }, [])
-
-  function navigateSliderPage(option) {
-    if (option === '+') {
-      setPage((prev) => prev += 3)
-    } else if (option === '-') {
-      setPage((prev) => prev -= 3)
-    }
-  }
+  
+  
+    {products && products.map((item) => <ItemCard key={item.deal_id} item={item} page={page} />)}
+  */
 
 
   return (
     <>
       <div className="flex flex-row overflow-x-hidden w-full flex-nowrap justify-between p-4 gap-y-4 gap-x-4">
-        {products && products.map((item) => <ItemCard key={item.deal_id} item={item} page={page} />)}
 
       </div>
-      <div className="flex flex-row w-full justify-around items-center">
+      <div className="flex flex-row w-full justify-around items-center mb-12">
         <button disabled={page === 0} className="p-1 bg-red-600 rounded-full disabled:bg-red-400" onClick={() => navigateSliderPage('-')}>{prevArrow}</button>
         <button disabled={page >= 27} className="p-1 bg-red-600 rounded-full disabled:bg-red-400" onClick={() => navigateSliderPage('+')}>{nextArrow}</button>
       </div>
