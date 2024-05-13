@@ -21,9 +21,7 @@ export default function RootLayout({
       <body className={'bg-white overflow-x-hidden'}>
         <Header />
         <div className="flex">
-          <div className="max-sm:hidden">
-            <NavBar />
-          </div>
+  
 
           {children}
 

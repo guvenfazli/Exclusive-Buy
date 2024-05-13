@@ -26,7 +26,7 @@ export default function CategoryButtons() {
 
   return (
     <div className="flex flex-col w-full justify-around items-center">
-      <div className="flex w-full justify-around items-center mb-16">
+      <div className="flex w-full justify-around items-center mb-10">
         <div onClick={() => searchByCategory('Phones')} className={`border flex flex-col cursor-pointer p-8 gap-y-4 min-w-40 justify-center items-center hover:bg-red-200 ease-in-out duration-100 ${activeFilter === 'Phones' && 'bg-red-700'}`}>
           <p>{activeFilter === 'Phones' ? phonesActive : phonesIcon}</p>
           <p className={`text-xl ${activeFilter === 'Phones' && 'text-white'}`}>Phones</p>
@@ -55,8 +55,8 @@ export default function CategoryButtons() {
       </div>
 
       <div className="w-full flex flex-col">
-        <div className="flex w-full mb-12 p-3 justify-end items-center">
-          <button onClick={() => navigatePage('-')} className="p-1 bg-red-600 rounded-full disabled:bg-red-400">{prevArrow}</button>
+        <div className="flex w-full mb-3 p-3 justify-end items-center">
+          <button disabled={pageNumber === 1} onClick={() => navigatePage('-')} className="p-1 bg-red-600 rounded-full disabled:bg-red-400">{prevArrow}</button>
           <p className="ml-6">{pageNumber}</p>
           <button onClick={() => navigatePage('+')} className="p-1 ml-6 bg-red-600 rounded-full disabled:bg-red-400">{nextArrow}</button>
         </div>

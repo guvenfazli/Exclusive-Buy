@@ -6,7 +6,7 @@ export default function NavBar() {
       <button className="w-full text-lg">Gaming</button>
       <button className="w-full text-lg">Book Store</button>
       <button className="w-full text-lg">Toys</button>
-      <button className="w-full text-lg">Home & Lifestyle</button>
+      <button className="w-full text-lg">Lifestyle</button>
       <button className="w-full text-lg">Sports</button>
       <button className="w-full text-lg">Baby's</button>
       <button className="w-full text-lg">Kitchen</button>

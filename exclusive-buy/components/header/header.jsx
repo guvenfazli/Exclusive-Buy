@@ -1,7 +1,7 @@
 import { searchGlass } from './headerIcons'
 import { cartIcon } from './headerIcons'
 import { heartIcon } from './headerIcons'
-
+import Link from 'next/link'
 export default function Header() {
 
 
@@ -12,7 +12,7 @@ export default function Header() {
       </div>
 
       <div className="flex p-3 items-center justify-between max-lg:p-1 max-md:hidden">
-        <button className="text-black mr-8 ease-in-out duration-75 hover:border-b text-lg border-black">Home</button>
+        <Link href={'/'} className="text-black mr-8 ease-in-out duration-75 hover:border-b text-lg border-black">Home</Link>
         <button className="text-black mr-8 ease-in-out duration-75 hover:border-b text-lg border-black">Contact</button>
         <button className="text-black mr-8 ease-in-out duration-75 hover:border-b text-lg border-black">About</button>
         <button className="text-black ease-in-out duration-75 hover:border-b text-lg border-black">Sign Up</button>
