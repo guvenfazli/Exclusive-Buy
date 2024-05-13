@@ -1,9 +1,13 @@
+import ItemInfo from "@/components/itemDetails/itemInfo"
+
+export default function ItemPage({ params }) {
+
+  const itemId = params.itemId
 
 
-export default function ItemPage(){
   return (
     <div>
-      <p>Test!</p>
+      <ItemInfo itemId={itemId}/>
     </div>
   )
 }
