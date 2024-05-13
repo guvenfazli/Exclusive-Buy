@@ -1,6 +1,6 @@
 export default function NavBar() {
   return (
-    <div className="flex flex-col items-start h-full p-4 w-80 justify-between border-r-2 border-gray-200 max-lg:w-60 max-md:w-40">
+    <div className="flex flex-col items-start h-full p-4 w-44 justify-around border-r border-gray-200 max-lg:w-60 max-md:w-40">
       <button className="w-full text-lg">Fashion</button>
       <button className="w-full text-lg">Electronic</button>
       <button className="w-full text-lg">Gaming</button>
@@ -13,7 +13,6 @@ export default function NavBar() {
       <button className="w-full text-lg">Shoes</button>
       <button className="w-full text-lg">TVs</button>
       <button className="w-full text-lg">Photography</button>
-
     </div>
   )
 }

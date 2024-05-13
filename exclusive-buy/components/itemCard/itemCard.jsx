@@ -1,6 +1,8 @@
 import { addToWishListIcon } from "@/components/itemCard/itemCardIcons"
 import { addToCartIcon } from "@/components/itemCard/itemCardIcons"
 import Image from "next/image"
+import Link from "next/link"
+
 export default function ItemCard({ item, page, hot, categoryItem }) {
 
 
@@ -9,13 +11,13 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
 
   if (hot && !categoryItem) {
     return (
-      <div className={`flex flex-col flex-shrink-0 flex-grow-0 duration-700 ease-in-out justify-between w-1/5 p-4 border-2 max-lg:w-1/4 max-md:w-1/3 max-sm:w-full`} style={{ translate: `${page * -100}%` }}>
+      <div className={`flex flex-col flex-shrink-0 flex-grow-0 duration-700 ease-in-out justify-between w-1/5 p-4 border max-lg:w-1/4 max-md:w-1/3 max-sm:w-full`} style={{ translate: `${page * -100}%` }}>
         <div className="mb-4 relative h-60 w-full">
           {item?.deal_photo && <Image src={item.deal_photo} fill style={{ objectFit: 'contain' }} />}
         </div>
 
         <div className="mb-4 text-ellipsis">
-          <p className="line-clamp-2 font-bold">{item.deal_title}</p>
+          <Link href={`/${item.product_asin}`} className="line-clamp-2 font-bold hover:underline cursor-pointer">{item.deal_title}</Link>
         </div>
 
         <div className="flex justify-between mb-4">
@@ -36,13 +38,13 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
     )
   } else if (!hot && categoryItem) {
     return (
-      <div className={`flex flex-col flex-shrink-0 flex-grow-0 duration-700 ease-in-out justify-between w-1/5 p-4 border-2 max-lg:w-1/4 max-md:w-1/3 max-sm:w-full`}>
+      <div className={`flex flex-col flex-shrink-0 flex-grow-0 duration-700 ease-in-out justify-between w-1/5 p-4 border max-lg:w-1/4 max-md:w-1/3 max-sm:w-full`}>
         <div className="mb-4 relative h-60 w-full">
           {categoryItem?.product_photo && <Image src={categoryItem.product_photo} fill style={{ objectFit: 'contain' }} />}
         </div>
 
         <div className="mb-4 text-ellipsis">
-          <p className="line-clamp-2 font-bold">{categoryItem?.product_title}</p>
+          <Link href={`/${categoryItem.asin}`} className="line-clamp-2 font-bold hover:underline cursor-pointer">{categoryItem?.product_title}</Link>
         </div>
 
         <div className="flex justify-between mb-4">

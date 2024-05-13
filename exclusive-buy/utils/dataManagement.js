@@ -13,7 +13,7 @@ export default async function fetchDealItems() {
   return data
 }
 
-export async function fetchByCategory(category) {
+export async function fetchByCategory(category, pageNumber) {
   const options = {
     method: 'GET',
     headers: {
@@ -22,7 +22,7 @@ export async function fetchByCategory(category) {
     }
   };
 
-  const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${category}&page=1&country=US`, options)
+  const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${category}&page=${pageNumber}&country=US`, options)
   const resData = await response.json()
   const data = resData.data.products
   return data

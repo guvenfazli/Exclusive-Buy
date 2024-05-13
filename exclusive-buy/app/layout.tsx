@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/header"
 import NavBar from "@/components/NavBar/navbar"
+import CategoryButtons from "@/components/category/CategoryButtons";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -20,11 +21,12 @@ export default function RootLayout({
       <body className={'bg-white overflow-x-hidden'}>
         <Header />
         <div className="flex">
-          <div className=" max-sm:hidden">
+          <div className="max-sm:hidden">
             <NavBar />
           </div>
 
           {children}
+
         </div>
       </body>
     </html>

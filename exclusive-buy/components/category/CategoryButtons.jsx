@@ -3,14 +3,25 @@
 import { useState } from "react"
 import { phonesIcon, laptopsIcon, camerasIcon, shoesIcon, headphonesIcon } from "./buttonIcons"
 import { phonesActive, laptopsActive, camerasActive, shoesActive, headphonesActive } from "./buttonIcons"
+import { nextArrow, prevArrow } from "../itemShowcase/showcaseIcons"
 import CategoryItems from "../categoryItems/categoryItems"
 
 export default function CategoryButtons() {
 
   const [activeFilter, setActiveFilter] = useState('Phones')
+  const [pageNumber, setPageNumber] = useState(1)
 
   function searchByCategory(category) {
     setActiveFilter(category)
+  }
+
+  function navigatePage(option) {
+    if (option === '+') {
+      setPageNumber((prev) => prev += 1)
+    } else {
+      setPageNumber((prev) => prev -= 1)
+
+    }
   }
 
   return (
@@ -42,9 +53,14 @@ export default function CategoryButtons() {
         </div>
 
       </div>
-      <div className="w-full flex">
-        <CategoryItems category={activeFilter} />
 
+      <div className="w-full flex flex-col">
+        <div className="flex w-full mb-12 p-3 justify-end items-center">
+          <button onClick={() => navigatePage('-')} className="p-1 bg-red-600 rounded-full disabled:bg-red-400">{prevArrow}</button>
+          <p className="ml-6">{pageNumber}</p>
+          <button onClick={() => navigatePage('+')} className="p-1 ml-6 bg-red-600 rounded-full disabled:bg-red-400">{nextArrow}</button>
+        </div>
+        <CategoryItems pageNumber={pageNumber} category={activeFilter} />
       </div>
 
     </div>

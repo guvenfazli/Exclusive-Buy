@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react"
 import { fetchByCategory } from "../../utils/dataManagement"
 import ItemCard from "../itemCard/itemCard"
-export default function CategoryItems({ category }) {
+export default function CategoryItems({ category, pageNumber }) {
 
   const [categoryData, setCategoryData] = useState()
 
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchByCategory(category)
+      const data = await fetchByCategory(category, pageNumber)
       console.log(category)
       setCategoryData(data)
     }
 
     fetchData()
-  }, [category])
+  }, [category, pageNumber])
 
 
 
