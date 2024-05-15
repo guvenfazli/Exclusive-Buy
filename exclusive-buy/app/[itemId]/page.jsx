@@ -6,7 +6,7 @@ export default function ItemPage({ params }) {
 
 
   return (
-    <div>
+    <div className="flex w-full">
       <ItemInfo itemId={itemId}/>
     </div>
   )
