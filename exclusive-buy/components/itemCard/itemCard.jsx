@@ -11,18 +11,19 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
 
   if (hot && !categoryItem) {
     return (
-      <div className={`flex flex-col flex-shrink-0 flex-grow-0 duration-700 ease-in-out justify-between w-1/5 p-4 border max-lg:w-1/4 max-md:w-1/3 max-sm:w-full`} style={{ translate: `${page * -100}%` }}>
+      <div className={`flex flex-col flex-shrink-0 flex-grow-0 duration-700 ease-in-out justify-between w-1/5 p-4 border max-lg:w-1/4 max-md:w-1/3 max-sm:w-full`}
+        style={{ translate: `${page * -100}%` }}>
         <div className="mb-4 relative h-60 w-full">
           {item?.deal_photo && <Image src={item.deal_photo} fill style={{ objectFit: 'contain' }} alt="Product Image" />}
         </div>
 
         <div className="mb-4 text-ellipsis">
-          <Link href={`/${item.product_asin}`} className="line-clamp-2 font-bold hover:underline cursor-pointer">{item.deal_title}</Link>
+          <Link href={`/${item.product_asin}`} className="line-clamp-2 font-bold hover:underline cursor-pointer max-md:text-sm">{item.deal_title}</Link>
         </div>
 
         <div className="flex justify-between mb-4">
-          {item.deal_price.amount && <p className="text-red-600 text-lg">{item.deal_price.amount}$</p>}
-          {item.list_price.amount && <p className="text-gray-500 text-lg line-through">{item.list_price.amount}$</p>}
+          {item.deal_price.amount && <p className="text-red-600 text-lg max-lg:text-sm">{item.deal_price.amount}$</p>}
+          {item.list_price.amount && <p className="text-gray-500 text-lg line-through max-lg:text-sm">{item.list_price.amount}$</p>}
         </div>
 
         <div className=" mb-4">

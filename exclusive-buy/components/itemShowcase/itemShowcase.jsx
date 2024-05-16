@@ -22,9 +22,9 @@ export default function ItemShowcase() {
 
   function navigateSliderPage(option) {
     if (option === '+') {
-      setPage((prev) => prev += 3)
+      setPage((prev) => prev += 2)
     } else if (option === '-') {
-      setPage((prev) => prev -= 3)
+      setPage((prev) => prev -= 2)
     }
   }
 
