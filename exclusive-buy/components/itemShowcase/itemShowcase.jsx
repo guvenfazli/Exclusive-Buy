@@ -29,7 +29,7 @@ export default function ItemShowcase() {
   }
 
 
-
+  console.log(products)
 
 
   return (
@@ -37,7 +37,7 @@ export default function ItemShowcase() {
       <NavBar />
       <div className="flex overflow-x-hidden flex-col justify-between">
         <div className="flex flex-row overflow-x-hidden w-full flex-nowrap justify-between p-4 gap-y-4 gap-x-4">
-          {products && products.map((item) => <ItemCard key={item.deal_id} item={item} page={page} hot={item} />)}
+          {products && products.map((item) => <ItemCard key={item.product_asin} item={item} page={page} hot={item} />)}
         </div>
         <div className="flex flex-row w-full justify-around items-center mb-12">
           <button disabled={page === 0} className="p-1 bg-red-600 rounded-full disabled:bg-red-400" onClick={() => navigateSliderPage('-')}>{prevArrow}</button>

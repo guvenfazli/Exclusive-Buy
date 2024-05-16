@@ -13,7 +13,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
     return (
       <div className={`flex flex-col flex-shrink-0 flex-grow-0 duration-700 ease-in-out justify-between w-1/5 p-4 border max-lg:w-1/4 max-md:w-1/3 max-sm:w-full`} style={{ translate: `${page * -100}%` }}>
         <div className="mb-4 relative h-60 w-full">
-          {item?.deal_photo && <Image src={item.deal_photo} fill style={{ objectFit: 'contain' }} />}
+          {item?.deal_photo && <Image src={item.deal_photo} fill style={{ objectFit: 'contain' }} alt="Product Image" />}
         </div>
 
         <div className="mb-4 text-ellipsis">
