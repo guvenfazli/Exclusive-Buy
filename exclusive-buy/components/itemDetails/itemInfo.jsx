@@ -40,7 +40,7 @@ export default function ItemInfo({ itemId }) {
         <div className="relative w-1/5 h-96">
           {<Image src={itemPhotos && itemPhotos[imgIndex]} fill style={{ objectFit: 'contain' }} loading="lazy" alt="Product Image" />}
           <div className="absolute flex bottom-0 w-full justify-around items-center">
-            {itemPhotos?.map((img, index) => <button key={img} onClick={() => changeItemPhoto(index)} className="px-2 rounded-3xl text-white bg-red-700">{index + 1}</button>)}
+            {itemPhotos?.map((img, index) => <button key={img} onClick={() => changeItemPhoto(index)} className="px-2 py-2 border-4 border-red-700 rounded-3xl bg-white"></button>)}
           </div>
         </div>
 
