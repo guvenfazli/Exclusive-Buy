@@ -1,8 +1,16 @@
+"use client"
+
+import { useContext } from 'react'
 import { searchGlass } from './headerIcons'
 import { cartIcon } from './headerIcons'
 import { heartIcon } from './headerIcons'
+
+import { Cart } from '@/store/Cart'
 import Link from 'next/link'
+
 export default function Header() {
+
+  const cartCtx = useContext(Cart)
 
 
   return (
@@ -26,7 +34,9 @@ export default function Header() {
 
         <div className="flex p-3 items-center justify-between ml-12 max-lg:p-1 max-lg:ml-7 max-sm:hidden">
           <button>{cartIcon}</button>
+          <p>{cartCtx.cart.length}</p>
           <button className="ml-4">{heartIcon}</button>
+          <p>{cartCtx.wishList.length}</p>
         </div>
 
       </div>

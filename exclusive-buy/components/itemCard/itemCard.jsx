@@ -1,5 +1,8 @@
+"use client"
+import { useContext } from "react"
 import { addToWishListIcon } from "@/components/itemCard/itemCardIcons"
 import { addToCartIcon } from "@/components/itemCard/itemCardIcons"
+import { Cart } from "@/store/Cart"
 import Image from "next/image"
 import Link from "next/link"
 
@@ -7,6 +10,25 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
 
 
   //  <Image src={item.deal_photo} fill style={{ objectFit: 'contain' }} />
+
+  const cartCtx = useContext(Cart)
+
+  function addToCart(item) {
+    cartCtx.setCart((prev) => {
+      let updatedList = [...prev]
+      updatedList.push(item)
+      return updatedList
+    })
+  }
+
+  function addToWishList(item) {
+    cartCtx.setWishList((prev) => {
+      let updatedList = [...prev]
+      updatedList.push(item)
+      return updatedList
+    })
+  }
+
 
 
   if (hot && !categoryItem) {
@@ -31,8 +53,8 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         </div>
 
         <div className="flex flex-row items-center justify-between" >
-          <button className="bg-red-600 p-2 rounded-full">{addToCartIcon}</button>
-          <button className="bg-red-600 p-2 rounded-full">{addToWishListIcon}</button>
+          <button onClick={() => addToCart(item)} className="bg-red-600 p-2 rounded-full">{addToCartIcon}</button>
+          <button onClick={() => addToWishList(item)} className="bg-red-600 p-2 rounded-full">{addToWishListIcon}</button>
         </div>
 
       </div>
@@ -49,7 +71,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         </div>
 
         <div className="flex justify-between mb-4">
-          <p className="text-red-600 text-lg">{categoryItem?.product_price}$</p>
+          <p className="text-red-600 text-lg">{categoryItem?.product_price}</p>
         </div>
 
         <div className=" mb-4">
@@ -57,8 +79,8 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         </div>
 
         <div className="flex flex-row items-center justify-between" >
-          <button className="bg-red-600 p-2 rounded-full">{addToCartIcon}</button>
-          <button className="bg-red-600 p-2 rounded-full">{addToWishListIcon}</button>
+          <button onClick={() => addToCart(item)} className="bg-red-600 p-2 rounded-full">{addToCartIcon}</button>
+          <button onClick={() => addToWishList(item)} className="bg-red-600 p-2 rounded-full">{addToWishListIcon}</button>
         </div>
 
       </div>

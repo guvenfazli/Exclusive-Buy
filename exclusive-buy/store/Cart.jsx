@@ -4,15 +4,20 @@ import { createContext, useState } from "react";
 
 export const Cart = createContext({
   cart: [],
-  setCart: () => { }
+  setCart: () => { },
+  wishList: [],
+  setWishList: () => { },
 });
+
 
 export default function CartContext({ children }) {
   const [cart, setCart] = useState([])
-
+  const [wishList, setWishList] = useState([])
   const cartList = {
     cart: cart,
-    setCart: setCart
+    setCart: setCart,
+    wishList: wishList,
+    setWishList: setWishList
   }
 
   return (
