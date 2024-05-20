@@ -9,7 +9,6 @@ export default function CartPage() {
   const [itemList, setItemList] = useState(cartCtx?.cart)
 
   function manageQuantity(item, option) {
-    const sameItem = cartCtx.cart.some((sameItem) => sameItem.product_asin === item.product_asin)
     if (option === '+') {
       cartCtx.setCart((prev) => {
         let updatedList = [...prev]
@@ -29,8 +28,6 @@ export default function CartPage() {
       })
     }
   }
-
-  console.log(itemList)
 
   return (
     <div className="flex flex-col w-full gap-y-10 justify-center items-center">

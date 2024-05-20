@@ -14,7 +14,13 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
   const cartCtx = useContext(Cart)
 
   function addToCart(item) {
-    const sameItem = cartCtx.cart.some((sameItem) => sameItem.product_asin === item.product_asin)
+    let sameItem;
+    if (item.product_asin) {
+      sameItem = cartCtx.cart.some((sameItem) => sameItem.product_asin === item.product_asin)
+    } else if (item.asin) {
+      sameItem = cartCtx.cart.some((sameItem) => sameItem.asin === item.asin)
+    }
+    console.log(item)
     if (!sameItem) {
       cartCtx.setCart((prev) => {
         let updatedList = [...prev]
@@ -91,8 +97,8 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         </div>
 
         <div className="flex flex-row items-center justify-between" >
-          <button onClick={() => addToCart(item)} className="bg-red-600 p-2 rounded-full">{addToCartIcon}</button>
-          <button onClick={() => addToWishList(item)} className="bg-red-600 p-2 rounded-full">{addToWishListIcon}</button>
+          <button onClick={() => addToCart(categoryItem)} className="bg-red-600 p-2 rounded-full">{addToCartIcon}</button>
+          <button onClick={() => addToWishList(categoryItem)} className="bg-red-600 p-2 rounded-full">{addToWishListIcon}</button>
         </div>
 
       </div>
