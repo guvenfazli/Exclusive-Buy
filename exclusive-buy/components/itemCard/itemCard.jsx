@@ -14,11 +14,22 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
   const cartCtx = useContext(Cart)
 
   function addToCart(item) {
-    cartCtx.setCart((prev) => {
-      let updatedList = [...prev]
-      updatedList.push(item)
-      return updatedList
-    })
+    const sameItem = cartCtx.cart.some((sameItem) => sameItem.product_asin === item.product_asin)
+    if (!sameItem) {
+      cartCtx.setCart((prev) => {
+        let updatedList = [...prev]
+        updatedList.push({ ...item, quantity: 1 })
+        return updatedList
+      })
+    } else if (sameItem) {
+      cartCtx.setCart((prev) => {
+        let updatedList = [...prev]
+        const addedItemIndex = updatedList.findIndex((sameProduct) => sameProduct.product_asin === item.product_asin)
+        updatedList[addedItemIndex].quantity += 1
+        return updatedList
+      })
+    }
+
   }
 
   function addToWishList(item) {
@@ -29,6 +40,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
     })
   }
 
+  console.log(cartCtx.cart)
 
 
   if (hot && !categoryItem) {
