@@ -33,10 +33,14 @@ export default function Header() {
         </div>
 
         <div className="flex p-3 items-center justify-between ml-12 max-lg:p-1 max-lg:ml-7 max-sm:hidden">
-          <button>{cartIcon}</button>
-          <p>{cartCtx.cart.length}</p>
-          <button className="ml-4">{heartIcon}</button>
-          <p>{cartCtx.wishList.length}</p>
+          <div className='flex justify-center items-center p-3 relative'>
+            <button>{cartIcon}</button>
+            <p className='absolute top-0 bg-red-700 px-1 left-2 rounded-full text-xs text-white'>{cartCtx.cart.length}</p>
+          </div>
+          <div className='flex justify-center items-center relative p-3'>
+            <button>{heartIcon}</button>
+            <p className='absolute top-0 bg-red-700 px-1 left-2 rounded-full text-xs text-white'>{cartCtx.wishList.length}</p>
+          </div>
         </div>
 
       </div>
