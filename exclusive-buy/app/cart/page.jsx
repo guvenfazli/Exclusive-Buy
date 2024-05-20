@@ -6,7 +6,6 @@ export default function CartPage() {
 
   const cartCtx = useContext(Cart)
 
-  const [itemList, setItemList] = useState(cartCtx?.cart)
 
   function manageQuantity(item, option) {
     if (option === '+') {

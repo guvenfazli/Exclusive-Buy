@@ -2,6 +2,7 @@ import Image from "next/image"
 
 export default function CartItem({ item, manageQuantity }) {
 
+  const itemPrice = item.quantity * item.deal_price.amount
 
   return (
     <div className="border p-3 w-4/5 flex justify-around items-center">
@@ -12,10 +13,15 @@ export default function CartItem({ item, manageQuantity }) {
       <div className="w-full text-wrap p-2">
         <p className="leading-8">{item?.deal_title || item?.product_title}</p>
       </div>
-      <div className="flex justify-between w-1/6 items-center">
-        <button className="px-1 text-xs text-white bg-red-700 rounded-full" onClick={() => manageQuantity(item, '-')}>-</button>
-        <p>{item?.quantity}</p>
-        <button className="px-1 text-xs text-white bg-red-700 rounded-full" onClick={() => manageQuantity(item, '+')}>+</button>
+      <div className="flex flex-col w-1/6 items-center justify-center">
+        <div className="flex justify-between w-full items-center mb-4">
+          <button className="px-1 text-xs text-white bg-red-700 rounded-full" onClick={() => manageQuantity(item, '-')}>-</button>
+          <p>{item?.quantity}</p>
+          <button className="px-1 text-xs text-white bg-red-700 rounded-full" onClick={() => manageQuantity(item, '+')}>+</button>
+        </div>
+
+        <p className="text-lg text-red-700">{itemPrice.toFixed(2)} $</p>
+
       </div>
     </div>
   )

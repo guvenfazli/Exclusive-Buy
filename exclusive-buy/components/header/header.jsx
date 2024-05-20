@@ -11,7 +11,8 @@ import Link from 'next/link'
 export default function Header() {
 
   const cartCtx = useContext(Cart)
-
+  const cartQuantity = cartCtx.cart.map((item) => item.quantity)
+  const cartItemsQuantity = cartQuantity.reduce((a, b) => a + b, 0)
 
   return (
     <header className="flex justify-between items-center p-3 bg-white border-b border-gray-200 whitespace-nowrap">
@@ -35,7 +36,7 @@ export default function Header() {
         <div className="flex p-3 items-center justify-between ml-12 max-lg:p-1 max-lg:ml-7 max-sm:hidden">
           <div className='flex justify-center items-center p-3 relative'>
             <Link href={'/cart'}>{cartIcon}</Link>
-            <p className='absolute top-0 bg-red-700 px-1 left-2 rounded-full text-xs text-white'>{cartCtx.cart.length}</p>
+            <p className='absolute top-0 bg-red-700 px-1 left-2 rounded-full text-xs text-white'>{cartItemsQuantity}</p>
           </div>
           <div className='flex justify-center items-center relative p-3'>
             <Link href={'/wishList'}>{heartIcon}</Link>
