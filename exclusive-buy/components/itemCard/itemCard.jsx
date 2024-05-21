@@ -1,19 +1,34 @@
 "use client"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { addToWishListIcon } from "@/components/itemCard/itemCardIcons"
 import { addToCartIcon } from "@/components/itemCard/itemCardIcons"
 import { Cart } from "@/store/Cart"
 import Image from "next/image"
 import Link from "next/link"
-
+import { AnimatePresence, motion } from "framer-motion"
 export default function ItemCard({ item, page, hot, categoryItem }) {
 
-
+  const [addedToCart, setAddedToCart] = useState(false)
   //  <Image src={item.deal_photo} fill style={{ objectFit: 'contain' }} />
 
+  useEffect(() => {
+    if (addedToCart) {
+      const timeOut = setTimeout(() => {
+        setAddedToCart(false)
+      }, 3000)
+
+
+
+    }
+
+
+
+  }, [addedToCart])
   const cartCtx = useContext(Cart)
 
+
   function addToCart(item) {
+    setAddedToCart(true)
     let sameItem;
     if (item.product_asin) {
       sameItem = cartCtx.cart.some((sameItem) => sameItem.product_asin === item.product_asin)
@@ -72,6 +87,9 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
 
         <div className="flex flex-row items-center justify-between" >
           <button onClick={() => addToCart(item)} className="bg-red-600 p-2 rounded-full">{addToCartIcon}</button>
+          <AnimatePresence>
+            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-black">Added!</motion.p>}
+          </AnimatePresence>
           <button onClick={() => addToWishList(item)} className="bg-red-600 p-2 rounded-full">{addToWishListIcon}</button>
         </div>
 
@@ -98,6 +116,9 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
 
         <div className="flex flex-row items-center justify-between" >
           <button onClick={() => addToCart(categoryItem)} className="bg-red-600 p-2 rounded-full">{addToCartIcon}</button>
+          <AnimatePresence>
+            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-black">Added!</motion.p>}
+          </AnimatePresence>
           <button onClick={() => addToWishList(categoryItem)} className="bg-red-600 p-2 rounded-full">{addToWishListIcon}</button>
         </div>
 

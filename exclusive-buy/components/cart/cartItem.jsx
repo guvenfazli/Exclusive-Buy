@@ -2,11 +2,11 @@ import Image from "next/image"
 
 export default function CartItem({ item, manageQuantity }) {
 
-  const itemPrice = item.quantity * item.deal_price.amount
-
+  const itemPrice = item?.quantity * item.deal_price?.amount || parseInt(item.product_price.replaceAll('$', '')) * item?.quantity
+  console.log(itemPrice)
   return (
     <div className="border p-3 w-4/5 flex justify-around items-center">
-      <div className="relative h-60 w-3/6">
+      <div className="relative h-60 w-1/6">
         {item?.deal_photo && <Image src={item.deal_photo} fill style={{ objectFit: 'contain' }} alt="Product Image" />}
         {item?.product_photo && <Image src={item.product_photo} fill style={{ objectFit: 'contain' }} alt="Product Image" />}
       </div>
@@ -20,7 +20,7 @@ export default function CartItem({ item, manageQuantity }) {
           <button className="px-1 text-xs text-white bg-red-700 rounded-full" onClick={() => manageQuantity(item, '+')}>+</button>
         </div>
 
-        <p className="text-lg text-red-700">{itemPrice.toFixed(2)} $</p>
+        <p className="text-lg text-red-700">{itemPrice?.toFixed(2)} $</p>
 
       </div>
     </div>
