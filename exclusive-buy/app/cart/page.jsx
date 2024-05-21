@@ -7,53 +7,23 @@ import CartNavBar from "@/components/NavBar/cartNavBar"
 export default function CartPage() {
 
   const cartCtx = useContext(Cart)
-  const [dealItems, setDealItems] = useState()
-  const [dealOffItems, setDealOffItems] = useState()
   const [totalPrice, setTotalPrice] = useState(0)
-  useEffect(() => {
-    if (cartCtx.cart.length >= 0) {
-      setDealOffItems(() => {
-        const items = cartCtx.cart.filter((item) => item.product_price)
-        console.log(items)
-        const totalPrices = items.map((price) => parseFloat(price.product_price.replaceAll('$', '')) * price.quantity)
-        console.log(totalPrices)
-        const total = totalPrices.reduce((a, b) => a + b, 0)
-        return total
-      })
-      setDealItems(() => {
-        const items = cartCtx.cart.filter((item) => item.deal_price)
-        console.log(items)
-        const totalPrices = items.map((price) => parseFloat(price.deal_price.amount) * price.quantity)
-        console.log(totalPrices)
-        const total = totalPrices.reduce((a, b) => a + b, 0)
-        return total
-      })
-    }
+  console.log(cartCtx.cart)
 
+  useEffect(() => {
+    setTotalPrice(() => {
+      const deal = cartCtx.cart.filter((item) => item.deal_price)
+      const dealPrices = deal.map((price) => parseFloat(price.deal_price.amount) * price.quantity)
+      const dealSum = dealPrices.reduce((a, b) => a + b, 0)
+      const offDeal = cartCtx.cart.filter((item) => item.product_price)
+      const offDealPrices = offDeal.map((price) => parseFloat(price.product_price.replaceAll('$', '')) * price.quantity)
+      const offDealSum = offDealPrices.reduce((a, b) => a + b, 0)
+      let totalPrice = dealSum + offDealSum
+      return totalPrice
+    })
   }, [cartCtx.cart])
 
-  useEffect(() => {
-    if (cartCtx.cart.length >= 0) {
-      setDealOffItems(() => {
-        const items = cartCtx.cart.filter((item) => item.product_price)
-        console.log(items)
-        const totalPrices = items.map((price) => parseFloat(price.product_price.replaceAll('$', '')) * price.quantity)
-        console.log(totalPrices)
-        const total = totalPrices.reduce((a, b) => a + b, 0)
-        setTotalPrice((prev) => prev += total)
-        return total
-      })
-      setDealItems(() => {
-        const items = cartCtx.cart.filter((item) => item.deal_price)
-        console.log(items)
-        const totalPrices = items.map((price) => parseFloat(price.deal_price.amount) * price.quantity)
-        console.log(totalPrices)
-        const total = totalPrices.reduce((a, b) => a + b, 0)
-        setTotalPrice((prev) => prev += total)
-        return total
-      })
-    }
-  }, [])
+
 
 
   function manageQuantity(item, option) {
@@ -70,7 +40,6 @@ export default function CartPage() {
         updatedList[addedItemIndex].quantity += 1
         return updatedList
       })
-      setTotalPrice(dealItems + dealOffItems)
 
     } else if (option === '-') {
       cartCtx.setCart((prev) => {
@@ -88,12 +57,9 @@ export default function CartPage() {
         }
         return updatedList
       })
-      setTotalPrice(dealItems + dealOffItems)
 
     }
   }
-  console.log(dealItems)
-  console.log(dealOffItems)
   console.log(totalPrice)
   return (
     <div className="flex justify-between items-start py-4">
