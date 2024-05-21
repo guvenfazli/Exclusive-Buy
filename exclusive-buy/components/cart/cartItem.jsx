@@ -3,7 +3,6 @@ import Image from "next/image"
 export default function CartItem({ item, manageQuantity }) {
 
   const itemPrice = item?.quantity * item.deal_price?.amount || parseInt(item.product_price.replaceAll('$', '')) * item?.quantity
-  console.log(itemPrice)
   return (
     <div className="border p-3 w-4/5 flex justify-around items-center">
       <div className="relative h-60 w-1/6">

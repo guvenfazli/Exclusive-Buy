@@ -2,6 +2,7 @@
 import { useContext, useState } from "react"
 import { Cart } from "@/store/Cart"
 import CartItem from "@/components/cart/cartItem"
+import CartNavBar from "@/components/NavBar/cartNavBar"
 export default function CartPage() {
 
   const cartCtx = useContext(Cart)
@@ -29,8 +30,11 @@ export default function CartPage() {
   }
 
   return (
-    <div className="flex flex-col w-full gap-y-10 justify-center items-center">
-      {cartCtx.cart.map((item) => <CartItem key={item.product_asin} item={item} manageQuantity={manageQuantity} />)}
+    <div className="flex justify-between items-start py-4">
+      <div className="flex flex-col w-full gap-y-10 justify-center items-center">
+        {cartCtx.cart.map((item) => <CartItem key={item.product_asin} item={item} manageQuantity={manageQuantity} />)}
+      </div>
+      <CartNavBar />
     </div>
   )
 }
