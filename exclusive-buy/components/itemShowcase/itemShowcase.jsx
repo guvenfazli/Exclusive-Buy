@@ -28,10 +28,6 @@ export default function ItemShowcase() {
     }
   }
 
-
-  console.log(products)
-
-
   return (
     <div className="flex overflow-x-hidden mb-12">
       <NavBar />

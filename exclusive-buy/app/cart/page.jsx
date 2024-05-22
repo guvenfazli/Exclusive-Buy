@@ -8,7 +8,6 @@ export default function CartPage() {
 
   const cartCtx = useContext(Cart)
   const [totalPrice, setTotalPrice] = useState(0)
-  console.log(cartCtx.cart)
 
   useEffect(() => {
     setTotalPrice(() => {
@@ -57,10 +56,10 @@ export default function CartPage() {
         }
         return updatedList
       })
-
     }
   }
-  console.log(totalPrice)
+
+  
   return (
     <div className="flex justify-between items-start py-4">
       <div className="flex flex-col w-full gap-y-10 justify-center items-center">

@@ -36,11 +36,11 @@ export default function Header() {
         <div className="flex p-3 items-center justify-between ml-12 max-lg:p-1 max-lg:ml-7 max-sm:hidden">
           <div className='flex justify-center items-center p-3 relative'>
             <Link href={'/cart'}>{cartIcon}</Link>
-            <p className='absolute top-0 bg-red-700 px-1 left-2 rounded-full text-xs text-white'>{cartItemsQuantity}</p>
+            <p className='absolute top-0 bg-red-700 px-1.5 left-2 rounded-full text-sm text-white'>{cartItemsQuantity}</p>
           </div>
           <div className='flex justify-center items-center relative p-3'>
             <Link href={'/wishList'}>{heartIcon}</Link>
-            <p className='absolute top-0 bg-red-700 px-1 left-2 rounded-full text-xs text-white'>{cartCtx.wishList.length}</p>
+            <p className='absolute top-0 bg-red-700 px-1.5 left-2 rounded-full text-sm text-white'>{cartCtx.wishList.length}</p>
           </div>
         </div>
 

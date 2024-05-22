@@ -35,7 +35,6 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
     } else if (item.asin) {
       sameItem = cartCtx.cart.some((sameItem) => sameItem.asin === item.asin)
     }
-    console.log(item)
     if (!sameItem) {
       cartCtx.setCart((prev) => {
         let updatedList = [...prev]
@@ -61,7 +60,6 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
     })
   }
 
-  console.log(cartCtx.cart)
 
 
   if (hot && !categoryItem) {
@@ -88,7 +86,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         <div className="flex flex-row items-center justify-between" >
           <button onClick={() => addToCart(item)} className="bg-red-600 p-2 rounded-full">{addToCartIcon}</button>
           <AnimatePresence>
-            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-black">Added!</motion.p>}
+            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-red-700 text-lg">Added!</motion.p>}
           </AnimatePresence>
           <button onClick={() => addToWishList(item)} className="bg-red-600 p-2 rounded-full">{addToWishListIcon}</button>
         </div>
@@ -117,7 +115,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         <div className="flex flex-row items-center justify-between" >
           <button onClick={() => addToCart(categoryItem)} className="bg-red-600 p-2 rounded-full">{addToCartIcon}</button>
           <AnimatePresence>
-            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-black">Added!</motion.p>}
+            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-red-700 text-lg">Added!</motion.p>}
           </AnimatePresence>
           <button onClick={() => addToWishList(categoryItem)} className="bg-red-600 p-2 rounded-full">{addToWishListIcon}</button>
         </div>
