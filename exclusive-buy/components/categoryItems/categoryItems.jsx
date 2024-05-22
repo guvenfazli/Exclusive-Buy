@@ -1,14 +1,18 @@
 import { useEffect, useState } from "react"
 import { fetchByCategory } from "../../utils/dataManagement"
 import ItemCard from "../itemCard/itemCard"
+import Loading from "@/components/loading/loading"
 export default function CategoryItems({ category, pageNumber }) {
 
   const [categoryData, setCategoryData] = useState()
+  const [loading, setLoading] = useState(false)
+
 
   useEffect(() => {
     async function fetchData() {
+      setLoading(true)
       const data = await fetchByCategory(category, pageNumber)
-      console.log(category)
+      setLoading(false)
       setCategoryData(data)
     }
 
@@ -17,9 +21,13 @@ export default function CategoryItems({ category, pageNumber }) {
 
 
 
+
+
   return (
     <div className="flex flex-row flex-wrap gap-x-4 gap-y-4 justify-center items-start">
-      {categoryData?.map((item) => <ItemCard categoryItem={item} />)}
+      {loading ? <Loading /> :
+        categoryData?.map((item) => <ItemCard categoryItem={item} />)
+      }
     </div>
   )
 }
