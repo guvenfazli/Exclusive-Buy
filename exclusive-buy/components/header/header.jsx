@@ -30,8 +30,9 @@ export default function Header() {
         const data = await searchProduct(keyWord)
         setSearchResult(data)
       }
-
       setData()
+    } else {
+      setSearchResult('')
     }
   }, [keyWord])
 
