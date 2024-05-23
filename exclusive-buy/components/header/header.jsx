@@ -8,7 +8,7 @@ import { searchProduct } from '@/utils/dataManagement'
 import { Cart } from '@/store/Cart'
 import SearchResults from "@/components/searchResults/searchResults"
 import Link from 'next/link'
-
+import { AnimatePresence } from 'framer-motion'
 export default function Header() {
 
   const cartCtx = useContext(Cart)
@@ -54,7 +54,11 @@ export default function Header() {
         <div className="flex justify-between relative items-center rounded-md bg-gray-100 px-3">
           <input ref={searchWord} onChange={setSearchWord} className="bg-transparent p-3 text-black focus:outline-none" placeholder="What are you looking for?" />
           <p>{searchGlass}</p>
-          {searchResult && <SearchResults result={searchResult} />}
+          {searchResult &&
+            <AnimatePresence>
+              <SearchResults result={searchResult} />
+            </AnimatePresence>
+          }
         </div>
 
         <div className="flex p-3 items-center justify-between ml-12 max-lg:p-1 max-lg:ml-7 max-sm:hidden">
