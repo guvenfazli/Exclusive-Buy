@@ -16,7 +16,9 @@ export default function Header() {
   const cartItemsQuantity = cartQuantity.reduce((a, b) => a + b, 0)
   const [keyWord, setKeyWord] = useState('')
   const [searchResult, setSearchResult] = useState()
+  const [loading, setLoading] = useState(false)
   const searchWord = useRef()
+
   function setSearchWord() {
     setTimeout(() => {
       setKeyWord(searchWord.current?.value)
@@ -27,8 +29,13 @@ export default function Header() {
   useEffect(() => {
     if (keyWord.length > 2) {
       async function setData() {
+        const animationTimer = setInterval(() => {
+          setLoading((prev) => !prev)
+        }, 800)
         const data = await searchProduct(keyWord)
         setSearchResult(data)
+        clearInterval(animationTimer)
+        setLoading(false)
       }
       setData()
     } else {
@@ -51,8 +58,8 @@ export default function Header() {
       </div>
 
       <div className="flex p-3 items-center justify-between max-md:w-full max-sm:justify-center">
-        <div className="flex justify-between relative items-center rounded-md bg-gray-100 px-3">
-          <input ref={searchWord} onChange={setSearchWord} className="bg-transparent p-3 text-black focus:outline-none" placeholder="What are you looking for?" />
+        <div className={`flex justify-between relative items-center rounded-md bg-gray-100 ${loading ? 'bg-gray-400' : 'bg-gray-100'} px-3`}>
+          <input ref={searchWord} onChange={setSearchWord} className={`bg-transparent duration-100 ease-in-out p-3 text-black focus:outline-none`} placeholder="What are you looking for?" />
           <p>{searchGlass}</p>
           {searchResult &&
             <AnimatePresence>
