@@ -1,11 +1,12 @@
 "use client"
 
-import { useContext, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { searchGlass } from './headerIcons'
 import { cartIcon } from './headerIcons'
 import { heartIcon } from './headerIcons'
-
+import { searchProduct } from '@/utils/dataManagement'
 import { Cart } from '@/store/Cart'
+import SearchResults from "@/components/searchResults/searchResults"
 import Link from 'next/link'
 
 export default function Header() {
@@ -13,7 +14,8 @@ export default function Header() {
   const cartCtx = useContext(Cart)
   const cartQuantity = cartCtx.cart.map((item) => item.quantity)
   const cartItemsQuantity = cartQuantity.reduce((a, b) => a + b, 0)
-  const [keyWord, setKeyWord] = useState()
+  const [keyWord, setKeyWord] = useState('')
+  const [searchResult, setSearchResult] = useState(true)
   const searchWord = useRef()
   function setSearchWord() {
     setTimeout(() => {
@@ -21,8 +23,20 @@ export default function Header() {
     }, 1000)
   }
 
-  console.log(keyWord)
+  /*
+  useEffect(() => {
+    if (keyWord.length > 2) {
+      async function setData() {
+        const data = await searchProduct(keyWord)
+        setSearchResult(data)
+      }
 
+      setData()
+    }
+  }, [keyWord])
+
+  console.log(searchResult)
+  */
   return (
     <header className="flex justify-between items-center p-3 bg-white border-b border-gray-200 whitespace-nowrap">
       <div className="flex p-3 max-lg:hidden">
@@ -37,9 +51,10 @@ export default function Header() {
       </div>
 
       <div className="flex p-3 items-center justify-between max-md:w-full max-sm:justify-center">
-        <div className="flex justify-between items-center rounded-md bg-gray-100 px-3">
+        <div className="flex justify-between relative items-center rounded-md bg-gray-100 px-3">
           <input ref={searchWord} onChange={setSearchWord} className="bg-transparent p-3 text-black focus:outline-none" placeholder="What are you looking for?" />
           <p>{searchGlass}</p>
+          {searchResult && <SearchResults />}
         </div>
 
         <div className="flex p-3 items-center justify-between ml-12 max-lg:p-1 max-lg:ml-7 max-sm:hidden">
