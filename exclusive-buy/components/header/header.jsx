@@ -15,7 +15,7 @@ export default function Header() {
   const cartQuantity = cartCtx.cart.map((item) => item.quantity)
   const cartItemsQuantity = cartQuantity.reduce((a, b) => a + b, 0)
   const [keyWord, setKeyWord] = useState('')
-  const [searchResult, setSearchResult] = useState(true)
+  const [searchResult, setSearchResult] = useState()
   const searchWord = useRef()
   function setSearchWord() {
     setTimeout(() => {
@@ -23,7 +23,7 @@ export default function Header() {
     }, 1000)
   }
 
-  /*
+
   useEffect(() => {
     if (keyWord.length > 2) {
       async function setData() {
@@ -35,8 +35,7 @@ export default function Header() {
     }
   }, [keyWord])
 
-  console.log(searchResult)
-  */
+
   return (
     <header className="flex justify-between items-center p-3 bg-white border-b border-gray-200 whitespace-nowrap">
       <div className="flex p-3 max-lg:hidden">
@@ -54,7 +53,7 @@ export default function Header() {
         <div className="flex justify-between relative items-center rounded-md bg-gray-100 px-3">
           <input ref={searchWord} onChange={setSearchWord} className="bg-transparent p-3 text-black focus:outline-none" placeholder="What are you looking for?" />
           <p>{searchGlass}</p>
-          {searchResult && <SearchResults />}
+          {searchResult && <SearchResults result={searchResult} />}
         </div>
 
         <div className="flex p-3 items-center justify-between ml-12 max-lg:p-1 max-lg:ml-7 max-sm:hidden">
