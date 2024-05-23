@@ -1,6 +1,6 @@
 "use client"
 
-import { useContext } from 'react'
+import { useContext, useRef, useState } from 'react'
 import { searchGlass } from './headerIcons'
 import { cartIcon } from './headerIcons'
 import { heartIcon } from './headerIcons'
@@ -13,6 +13,15 @@ export default function Header() {
   const cartCtx = useContext(Cart)
   const cartQuantity = cartCtx.cart.map((item) => item.quantity)
   const cartItemsQuantity = cartQuantity.reduce((a, b) => a + b, 0)
+  const [keyWord, setKeyWord] = useState()
+  const searchWord = useRef()
+  function setSearchWord() {
+    setTimeout(() => {
+      setKeyWord(searchWord.current?.value)
+    }, 1000)
+  }
+
+  console.log(keyWord)
 
   return (
     <header className="flex justify-between items-center p-3 bg-white border-b border-gray-200 whitespace-nowrap">
@@ -29,7 +38,7 @@ export default function Header() {
 
       <div className="flex p-3 items-center justify-between max-md:w-full max-sm:justify-center">
         <div className="flex justify-between items-center rounded-md bg-gray-100 px-3">
-          <input className="bg-transparent p-3 text-black focus:outline-none" placeholder="What are you looking for?" />
+          <input ref={searchWord} onChange={setSearchWord} className="bg-transparent p-3 text-black focus:outline-none" placeholder="What are you looking for?" />
           <p>{searchGlass}</p>
         </div>
 

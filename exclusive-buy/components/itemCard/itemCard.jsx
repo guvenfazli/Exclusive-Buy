@@ -16,14 +16,9 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
       const timeOut = setTimeout(() => {
         setAddedToCart(false)
       }, 3000)
-
-
-
     }
-
-
-
   }, [addedToCart])
+
   const cartCtx = useContext(Cart)
 
 
@@ -53,6 +48,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
   }
 
   function addToWishList(item) {
+    setAddedToCart(true)
     cartCtx.setWishList((prev) => {
       let updatedList = [...prev]
       updatedList.push(item)
