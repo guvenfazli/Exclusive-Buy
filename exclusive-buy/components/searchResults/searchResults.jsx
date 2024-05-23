@@ -1,7 +1,14 @@
+import ResultCard from "./resultCard"
 export default function SearchResults() {
   return (
-    <div className="flex w-full absolute -bottom-6 border left-0 flex-col justify-start items-start">
-      <p>Selam</p>
+    <div className="absolute text-wrap z-10 w-full left-0 bottom-0 transform translate-y-full border bg-slate-950 text-white flex-col justify-start items-start shadow-lg rounded-md">
+
+      <ResultCard />
+      <ResultCard />
+      <ResultCard />
+
+
+
     </div>
   )
 }
