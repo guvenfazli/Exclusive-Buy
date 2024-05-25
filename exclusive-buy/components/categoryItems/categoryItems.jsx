@@ -20,13 +20,13 @@ export default function CategoryItems({ category, pageNumber }) {
   }, [category, pageNumber])
 
 
-
+  console.log(categoryData)
 
 
   return (
     <div className="flex flex-row flex-wrap gap-x-4 gap-y-4 justify-center items-start">
       {loading ? <Loading /> :
-        categoryData?.map((item) => <ItemCard categoryItem={item} />)
+        categoryData?.map((item) => <ItemCard key={item.asin} categoryItem={item} />)
       }
     </div>
   )
