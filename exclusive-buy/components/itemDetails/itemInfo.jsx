@@ -1,6 +1,7 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { Cart } from "@/store/Cart"
 import { fetchDetails } from "../../utils/dataManagement"
 import Image from "next/image"
 import SimilarProducts from "./SimilarProducts"
@@ -14,7 +15,7 @@ export default function ItemInfo({ itemId }) {
   const [imgIndex, setImgIndex] = useState(0)
   const [loading, setLoading] = useState(false)
   const itemPhotos = product?.product_photos.map((img) => img)
-
+  const cartCtx = useContext(Cart)
 
   function changeItemPhoto(imgIndex) {
     setImgIndex(imgIndex)
@@ -34,7 +35,36 @@ export default function ItemInfo({ itemId }) {
     fetchProduct()
   }, [itemId])
 
+  function addToCart() {
+    let sameItem;
+    if (product.product_asin) {
+      sameItem = cartCtx.cart.some((sameItem) => sameItem.product_asin === product.product_asin)
+    } else if (product.asin) {
+      sameItem = cartCtx.cart.some((sameItem) => sameItem.asin === product.asin)
+    }
+    if (!sameItem) {
+      cartCtx.setCart((prev) => {
+        let updatedList = [...prev]
+        updatedList.push({ ...product, quantity: 1 })
+        return updatedList
+      })
+    } else if (sameItem) {
+      cartCtx.setCart((prev) => {
+        let updatedList = [...prev]
+        const addedItemIndex = updatedList.findIndex((sameProduct) => sameProduct.product_asin === product.product_asin)
+        updatedList[addedItemIndex].quantity += 1
+        return updatedList
+      })
+    }
+  }
 
+  function addToWishList() {
+    cartCtx.setWishList((prev) => {
+      let updatedList = [...prev]
+      updatedList.push(product)
+      return updatedList
+    })
+  }
 
   return (
     <div className="w-full">
@@ -91,8 +121,8 @@ export default function ItemInfo({ itemId }) {
               <p className="text-xl font-bold text-red-600">{product?.product_price + '$'}</p>
               <p className="text-sm line-through text-gray-600">{product?.product_original_price}</p>
               <p className={`text-green-700`}>{product?.product_availability}</p>
-              <button className=" bg-red-700 rounded-2xl text-white p-2 w-full ease-in-out duration-100 hover:bg-red-800">Add to Cart</button>
-              <button className=" bg-red-700 rounded-2xl text-white p-2 w-full ease-in-out duration-100 hover:bg-red-800">Add to Wishlist</button>
+              <button onClick={() => addToCart()} className="bg-red-700 rounded-2xl text-white p-2 w-full ease-in-out duration-100 hover:bg-red-800">Add to Cart</button>
+              <button onClick={() => addToWishList()} className="bg-red-700 rounded-2xl text-white p-2 w-full ease-in-out duration-100 hover:bg-red-800">Add to Wishlist</button>
             </div>
           </div>
           <div className="flex w-full gap-y-4 gap-x-4 flex-wrap justify-around items-start">
