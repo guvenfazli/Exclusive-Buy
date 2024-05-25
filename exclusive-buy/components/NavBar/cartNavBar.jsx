@@ -21,7 +21,7 @@ export default function CartNavBar({ total }) {
       </div>
       <p className={`text-lg ${isFreeShipment && 'line-through'}`}>Shipment: 12$</p>
       <div className="p-2 border-t flex flex-col justify-between w-full items-center">
-        <p className="text-lg mb-4">Total: {isFreeShipment ? total?.toFixed(2) : total?.toFixed(2) + 12}$</p>
+        <p className="text-lg mb-4">Total: {isFreeShipment ? total?.toFixed(2) : (total + 12).toFixed(2)}$</p>
         <button className="w-full border bg-red-700 duration-150 ease-in-out text-white text-xl p-2 hover:bg-red-800">Confirm the Order</button>
       </div>
     </div>

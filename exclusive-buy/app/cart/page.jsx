@@ -3,6 +3,8 @@ import { useContext, useEffect, useState } from "react"
 import { Cart } from "@/store/Cart"
 import CartItem from "@/components/cart/cartItem"
 import CartNavBar from "@/components/NavBar/cartNavBar"
+import { cartIcon } from "@/components/header/headerIcons"
+import Link from "next/link"
 
 export default function CartPage() {
 
@@ -23,7 +25,7 @@ export default function CartPage() {
   }, [cartCtx.cart])
 
 
-
+  console.log(cartCtx.cart)
 
   function manageQuantity(item, option) {
     if (option === '+') {
@@ -59,13 +61,25 @@ export default function CartPage() {
     }
   }
 
-  
-  return (
-    <div className="flex justify-between items-start py-4">
-      <div className="flex flex-col w-full gap-y-10 justify-center items-center">
-        {cartCtx.cart.map((item) => <CartItem key={item.product_asin} item={item} manageQuantity={manageQuantity} />)}
+  if (cartCtx.cart.length >= 1) {
+    return (
+      <div className="flex justify-around w-full px-4 items-start py-4">
+        <div className="flex flex-col gap-y-10">
+          {cartCtx.cart.map((item) => <CartItem key={item.product_asin} item={item} manageQuantity={manageQuantity} />)}
+        </div>
+        <CartNavBar total={totalPrice} />
       </div>
-      <CartNavBar total={totalPrice} />
-    </div>
-  )
+    )
+  } else if (cartCtx.cart.length <= 0) {
+    return (
+      <div className="w-full flex py-4 justify-center items-center">
+        <div className="w-2/5 border flex justify-between p-5 shadow-md rounded-xl items-center">
+          {cartIcon}
+          <p className="text-xl text-black">You did not add any item into your cart.</p>
+          <Link href={'/'} className=" bg-red-700 text-xl text-white p-2 px-9 shadow-sm">Start Shopping</Link>
+        </div>
+      </div>
+    )
+  }
+
 }

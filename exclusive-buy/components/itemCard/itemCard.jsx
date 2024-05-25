@@ -9,7 +9,6 @@ import { AnimatePresence, motion } from "framer-motion"
 export default function ItemCard({ item, page, hot, categoryItem }) {
 
   const [addedToCart, setAddedToCart] = useState(false)
-  //  <Image src={item.deal_photo} fill style={{ objectFit: 'contain' }} />
 
   useEffect(() => {
     if (addedToCart) {
@@ -18,6 +17,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
       }, 3000)
     }
   }, [addedToCart])
+
 
   const cartCtx = useContext(Cart)
 
@@ -82,7 +82,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         <div className="flex flex-row items-center justify-between" >
           <button onClick={() => addToCart(item)} className="bg-red-600 p-2 rounded-full">{addToCartIcon}</button>
           <AnimatePresence>
-            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-red-700 text-lg">Added!</motion.p>}
+            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-lg border px-3 bg-red-700 text-white rounded-3xl">Added!</motion.p>}
           </AnimatePresence>
           <button onClick={() => addToWishList(item)} className="bg-red-600 p-2 rounded-full">{addToWishListIcon}</button>
         </div>
@@ -111,7 +111,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         <div className="flex flex-row items-center justify-between" >
           <button onClick={() => addToCart(categoryItem)} className="bg-red-600 p-2 rounded-full">{addToCartIcon}</button>
           <AnimatePresence>
-            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-red-700 text-lg">Added!</motion.p>}
+            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-lg border px-3 bg-red-700 text-white rounded-3xl">Added!</motion.p>}
           </AnimatePresence>
           <button onClick={() => addToWishList(categoryItem)} className="bg-red-600 p-2 rounded-full">{addToWishListIcon}</button>
         </div>
