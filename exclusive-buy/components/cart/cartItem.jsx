@@ -6,13 +6,13 @@ export default function CartItem({ item, manageQuantity }) {
 
   return (
     <AnimatePresence>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="border p-3 w-4/5 flex justify-around items-center rounded-lg">
-        <div className="relative h-60 w-1/6 mr-3">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="border p-3 w-4/5 flex justify-around items-center rounded-lg max-md:w-full max-[460px]:flex-col">
+        <div className="relative h-60 w-2/5 mr-3">
           {item?.deal_photo && <Image src={item.deal_photo} fill style={{ objectFit: 'contain' }} alt="Product Image" />}
           {item?.product_photo && <Image src={item.product_photo} fill style={{ objectFit: 'contain' }} alt="Product Image" />}
         </div>
         <div className="w-full text-wrap p-2">
-          <p className="leading-8 text-lg">{item?.deal_title || item?.product_title}</p>
+          <p className="leading-8 text-lg  max-md:text-base">{item?.deal_title || item?.product_title}</p>
         </div>
         <div className="flex flex-col w-40 items-center justify-center">
           <div className="flex justify-between w-full items-center mb-4">
