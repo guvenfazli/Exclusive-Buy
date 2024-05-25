@@ -21,7 +21,7 @@ export default function CartItem({ item, manageQuantity }) {
             <button className="px-1 text-xs text-white bg-red-700 rounded-full" onClick={() => manageQuantity(item, '+')}>+</button>
           </div>
           <p className="text-lg text-red-700">{itemPrice?.toFixed(2)} $</p>
-          <p></p>
+          
         </div>
       </motion.div>
     </AnimatePresence>
