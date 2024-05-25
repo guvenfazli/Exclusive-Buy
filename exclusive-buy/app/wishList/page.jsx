@@ -7,7 +7,6 @@ import { heartIcon } from "@/components/header/headerIcons"
 export default function WishListPage() {
 
   const cartCtx = useContext(Cart)
-  const [wishList, setWishList] = useState(cartCtx.wishList)
 
   function addToCart(item) {
     let sameItem;
@@ -59,10 +58,11 @@ export default function WishListPage() {
       return updatedList
     })
   }
+
   if (cartCtx.wishList.length >= 1) {
     return (
       <div className="flex flex-col w-full justify-start items-center py-4 gap-y-10">
-        {cartCtx.wishList.map((item) => <WishListItem item={item} addToCart={addToCart} removeWish={removeWish} />)}
+        {cartCtx.wishList.map((item) => <WishListItem key={item.product_asin || item.asin} item={item} addToCart={addToCart} removeWish={removeWish} />)}
       </div>
     )
   } else {
