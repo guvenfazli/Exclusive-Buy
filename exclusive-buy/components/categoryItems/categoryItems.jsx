@@ -13,12 +13,12 @@ export default function CategoryItems({ category, pageNumber }) {
       setLoading(true)
       const data = await fetchByCategory(category, pageNumber)
       setLoading(false)
+      console.log(data)
       setCategoryData(data)
     }
 
     fetchData()
   }, [category, pageNumber])
-
 
   return (
     <div className="flex flex-row flex-wrap gap-x-4 gap-y-4 justify-center items-start">

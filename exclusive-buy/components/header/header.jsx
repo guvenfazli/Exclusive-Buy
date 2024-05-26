@@ -27,7 +27,7 @@ export default function Header() {
   function setSearchWord() {
     setTimeout(() => {
       setKeyWord(searchWord.current?.value)
-    }, 1000)
+    }, 200)
   }
 
 

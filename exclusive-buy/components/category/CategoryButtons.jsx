@@ -13,6 +13,7 @@ export default function CategoryButtons() {
 
   function searchByCategory(category) {
     setActiveFilter(category)
+    setPageNumber(1)
   }
 
   function navigatePage(option) {
