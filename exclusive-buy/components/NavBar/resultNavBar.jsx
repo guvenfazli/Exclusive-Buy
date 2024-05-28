@@ -32,12 +32,12 @@ export default function ResultNavBar() {
       <p className="text-lg">On Sale?</p>
       <div className="flex flex-col border-b py-2 w-full justify-start items-start">
         <div className="flex items-center justify-start">
-          <input type="checkbox" id="yes" name="yes" className="w-4 mr-1 h-4 cursor-pointer" />
-          <p>Yes</p>
+          <input type="checkbox" id="yes" name="yes" className="w-3 mr-1 h-3 cursor-pointer" />
+          <p className="text-sm">Yes</p>
         </div>
         <div className="flex py-2 items-center justify-start">
-          <input type="checkbox" id="yes" name="yes" className="w-4 mr-1 h-4 cursor-pointer" />
-          <p>No</p>
+          <input type="checkbox" id="yes" name="yes" className="w-3 mr-1 h-3 cursor-pointer" />
+          <p className="text-sm">No</p>
         </div>
       </div>
       <div className="flex border-b py-2 gap-y-2 flex-col">
@@ -61,7 +61,9 @@ export default function ResultNavBar() {
           </div>
         </div>
       </div>
-      <button className="w-full justify-center bg-red-700 py-1 text-lg text-white duration-75 ease-in-out hover:bg-red-800">Filter</button>
+      <div className="flex justify-center items-center">
+        <button className="bg-red-700 px-5 rounded-md py-1 text-lg text-white duration-75 ease-in-out hover:bg-red-800">Filter</button>
+      </div>
 
     </div>
   )

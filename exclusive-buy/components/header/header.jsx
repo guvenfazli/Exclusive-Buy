@@ -27,7 +27,7 @@ export default function Header() {
   function setSearchWord() {
     setTimeout(() => {
       setKeyWord(searchWord.current?.value)
-    }, 200)
+    }, 800)
   }
 
 
@@ -63,7 +63,7 @@ export default function Header() {
       </div>
 
       <div className="flex p-3 items-center justify-between max-md:w-full max-sm:justify-center">
-        <div className={`flex justify-between relative items-center rounded-md focus:outline-none focus:ring-0 focus:border-transparent bg-gray-100 ${loading ? 'bg-gray-50' : 'bg-gray-100'} px-3`}>
+        <div className={`flex justify-between relative items-center rounded-md focus:outline-none focus:ring-0 focus:border-transparent ${loading ? 'bg-gray-200' : 'bg-gray-100'} px-3`}>
           <input onMouseEnter={() => setIsVisible(true)} ref={searchWord} onChange={setSearchWord} className={`bg-transparent duration-100 ease-in-out p-3 text-black focus:outline-none focus:border-transparent transition-none focus:ring-0`} placeholder="What are you looking for?" />
           <Link href={`/searchResults/${keyWord}`} className='cursor-pointer'>{searchGlass}</Link>
           {searchResult &&
