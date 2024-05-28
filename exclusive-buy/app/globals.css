@@ -26,3 +26,23 @@ body {
     text-wrap: balance;
   }
 }
+
+input[type='range'] {
+  -webkit-appearance: none;
+  background: #B91C1C;
+  height: 5px;
+  border-radius: 0px;
+  outline: none;
+
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #B91C1C;
+  cursor: pointer;
+}

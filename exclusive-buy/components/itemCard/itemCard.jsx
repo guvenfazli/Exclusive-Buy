@@ -106,7 +106,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         </div>
 
         <div className="flex justify-between mb-4">
-          <p className="text-red-600 text-lg">{categoryItem?.product_price}</p>
+          <p className="text-red-600 text-lg">{categoryItem?.product_price ? categoryItem?.product_price : '$199.99'}</p>
         </div>
 
         <div className=" mb-4">
