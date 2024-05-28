@@ -51,18 +51,23 @@ input[type="checkbox"] {
   appearance: none;
   width: 15px;
   height: 15px;
-  border: 2px solid #4A5568;
+  border: 2px solid #B91C1C;
   /* Tailwind Gray-700 */
   border-radius: 4px;
   position: relative;
   cursor: pointer;
   outline: none;
+  transition: 0.2s;
+}
+
+input[type="checkbox"]:hover {
+  border: 2px solid #EF4444;
 }
 
 input[type="checkbox"]:checked {
-  background-color: #EF4444;
+  background-color: #B91C1C;
   /* Tailwind Red-500 */
-  border-color: #EF4444;
+  border-color: #B91C1C;
   /* Tailwind Red-500 */
 }
 

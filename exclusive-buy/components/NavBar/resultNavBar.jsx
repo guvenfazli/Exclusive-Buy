@@ -1,16 +1,12 @@
 "use client"
 
-import { useRef, useState } from "react"
+import { useRef } from "react"
 
-export default function ResultNavBar() {
+export default function ResultNavBar({ priceFilter, setPriceFilter }) {
 
   const minPrice = useRef()
   const maxPrice = useRef()
 
-  const [priceFilter, setPriceFilter] = useState({
-    min: 0,
-    max: 0
-  })
   function changePriceFilter(price, priceType) {
     setPriceFilter((prev) => {
       let newPrice = { ...prev }
@@ -18,6 +14,8 @@ export default function ResultNavBar() {
       return newPrice
     })
   }
+
+  
   return (
     <div className="flex gap-y-4 flex-col">
       <div className="flex relative border-b py-2 flex-col gap-y-4 w-full">
