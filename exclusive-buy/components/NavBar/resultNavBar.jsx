@@ -15,10 +15,10 @@ export default function ResultNavBar({ priceFilter, setPriceFilter }) {
     })
   }
 
-  
+
   return (
     <div className="flex gap-y-4 flex-col">
-      <div className="flex relative border-b py-2 flex-col gap-y-4 w-full">
+      <div className="flex relative py-2 flex-col gap-y-4 w-full">
         <p className="text-lg">Price</p>
         <input placeholder="Min" value={priceFilter.min} className="border p-1" />
         <input placeholder="Max" value={priceFilter.max} className="border p-1" />
