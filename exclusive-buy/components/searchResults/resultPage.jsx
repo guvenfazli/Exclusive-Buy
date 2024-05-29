@@ -19,7 +19,6 @@ export default function Results({ keyWord }) {
 
     search()
   }, [])
-  console.log(results)
 
   return (
     <>

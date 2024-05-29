@@ -23,8 +23,12 @@ export default function ResultNavBar({ priceFilter, setPriceFilter }) {
         <input placeholder="Min" value={priceFilter.min} className="border p-1" />
         <input placeholder="Max" value={priceFilter.max} className="border p-1" />
         <div className="flex items-center">
-          <input type="range" onChange={() => changePriceFilter('min', minPrice)} ref={minPrice} min="0" max="1000" className="absolute flex w-1/2 left-0 bottom-1" />
-          <input type="range" onChange={() => changePriceFilter('max', maxPrice)} ref={maxPrice} min="1000" max="5000" className="absolute flex w-1/2 right-0 bottom-1" />
+          <div className="flex w-1/2">
+            <input type="range" onChange={() => changePriceFilter('min', minPrice)} ref={minPrice} min="0" max="1000" className=" flex w-full left-0 bottom-1" />
+          </div>
+          <div className="flex w-1/2">
+            <input type="range" onChange={() => changePriceFilter('max', maxPrice)} ref={maxPrice} min="1000" max="5000" className=" flex w-full right-0 bottom-1" />
+          </div>
         </div>
       </div>
       <p className="text-lg">On Sale?</p>
