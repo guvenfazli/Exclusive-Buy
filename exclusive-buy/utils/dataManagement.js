@@ -2,7 +2,7 @@ export default async function fetchDealItems() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'e0833db509mshbe064b5ecea13b8p199f6ajsn55d17f676398',
+      'X-RapidAPI-Key': '0513a73532mshe0479d6629e987ep131dc3jsn11cda4747b33',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
@@ -17,7 +17,7 @@ export async function fetchByCategory(category, pageNumber) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'e0833db509mshbe064b5ecea13b8p199f6ajsn55d17f676398',
+      'X-RapidAPI-Key': '0513a73532mshe0479d6629e987ep131dc3jsn11cda4747b33',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
@@ -32,7 +32,7 @@ export async function fetchDetails(itemId) {
   const options = {
     method: 'GET',
     headers: {
-      'x-rapidapi-key': 'e0833db509mshbe064b5ecea13b8p199f6ajsn55d17f676398',
+      'x-rapidapi-key': '0513a73532mshe0479d6629e987ep131dc3jsn11cda4747b33',
       'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com',
       'Content-Type': 'application/json'
     }
@@ -48,13 +48,29 @@ export async function searchProduct(keyWord) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'e0833db509mshbe064b5ecea13b8p199f6ajsn55d17f676398',
+      'X-RapidAPI-Key': '0513a73532mshe0479d6629e987ep131dc3jsn11cda4747b33',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
 
   const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=1&country=US`, options)
   const resData = await response.json()
+  const data = resData.data.products
+  return data
+}
+
+export async function filterListing(listFilter, priceFilter, keyWord) {
+  const options = {
+    method: 'GET',
+    headers: {
+      'X-RapidAPI-Key': '0513a73532mshe0479d6629e987ep131dc3jsn11cda4747b33',
+      'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
+    }
+  };
+
+  const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=1&country=US&sort_by=${listFilter}&min_price=${priceFilter.min}&max_price=${priceFilter.max}`, options);
+  const resData = await response.json();
+  console.log(resData)
   const data = resData.data.products
   return data
 }
