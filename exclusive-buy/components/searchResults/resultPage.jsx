@@ -3,7 +3,6 @@ import ItemCard from '../itemCard/itemCard'
 
 export default function Results({ results, filterSearch }) {
 
-  console.log(filterSearch)
 
   if (results && !filterSearch) {
     return (

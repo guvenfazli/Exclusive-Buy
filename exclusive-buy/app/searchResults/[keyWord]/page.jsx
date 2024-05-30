@@ -9,7 +9,7 @@ export default function SearchResultPage({ params }) {
 
   const keyWord = params.keyWord
   const [priceFilter, setPriceFilter] = useState({
-    min: 0,
+    min: 1,
     max: 5000
   })
   const [results, setResults] = useState()
@@ -32,6 +32,7 @@ export default function SearchResultPage({ params }) {
   async function filterResults(listFilter, priceFilter) {
     setLoading(true)
     const data = await filterListing(listFilter, priceFilter, keyWord)
+    console.log(data)
     setFilterSearch(data)
     setLoading(false)
   }

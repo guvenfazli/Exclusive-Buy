@@ -67,10 +67,8 @@ export async function filterListing(listFilter, priceFilter, keyWord) {
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
-
-  const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=1&country=US&sort_by=${listFilter}&min_price=${priceFilter.min}&max_price=${priceFilter.max}`, options);
+  const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=1&country=US&sort_by=${listFilter}&min_price=${priceFilter.min}&max_price=${priceFilter.max}&product_condition=ALL`, options);
   const resData = await response.json();
-  console.log(resData)
   const data = resData.data.products
   return data
 }

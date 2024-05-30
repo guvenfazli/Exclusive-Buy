@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from "react"
 import { addToWishListIcon } from "@/components/itemCard/itemCardIcons"
 import { addToCartIcon } from "@/components/itemCard/itemCardIcons"
+import { bestSelling } from "@/components/itemCard/itemCardIcons"
 import { Cart } from "@/store/Cart"
 import Image from "next/image"
 import Link from "next/link"
@@ -121,8 +122,12 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
           <p className="text-red-600 text-lg">{categoryItem?.product_price ? categoryItem?.product_price : '$199.99'}</p>
         </div>
 
-        <div className=" mb-4">
-          <p className="text-gray-500 text-base">Rating: {categoryItem?.product_star_rating} Stars</p>
+        <div className="flex w-full mb-4 justify-between items-center">
+          <div>
+            <p className="text-gray-500 text-base">Rating: {categoryItem?.product_star_rating ? categoryItem?.product_star_rating : 4.7} Stars</p>
+            <p className="text-gray-400 text-sm">{categoryItem?.product_num_ratings ? '(' + categoryItem?.product_num_ratings + ')' : '(' + 164 + ')'}</p>
+          </div>
+          {categoryItem?.is_best_seller && bestSelling}
         </div>
 
         <div className="flex flex-row items-center justify-between" >

@@ -24,10 +24,10 @@ export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, se
         <input placeholder="Max" value={priceFilter.max} className="border p-1" />
         <div className="flex items-center">
           <div className="flex w-1/2">
-            <input type="range" onChange={() => changePriceFilter('min', minPrice)} ref={minPrice} min="0" max="1000" className=" flex w-full left-0 bottom-1" />
+            <input type="range" onChange={() => changePriceFilter('min', minPrice)} ref={minPrice} min="0" max="1000" className="flex w-full left-0 bottom-1" />
           </div>
           <div className="flex w-1/2">
-            <input type="range" onChange={() => changePriceFilter('max', maxPrice)} ref={maxPrice} min="1000" max="5000" className=" flex w-full right-0 bottom-1" />
+            <input type="range" onChange={() => changePriceFilter('max', maxPrice)} ref={maxPrice} min="1000" max="5000" className="flex w-full right-0 bottom-1" />
           </div>
         </div>
       </div>
@@ -46,19 +46,19 @@ export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, se
         <p className="text-lg">Listing</p>
         <div className="flex flex-col items-start gap-y-2">
           <div className="flex w-full items-center justify-start">
-            <button onClick={() => setListFilter('LOWEST_PRICE')} className={`border-2 mr-2 border-red-700 ease-in-out duration-100 rounded-full p-1.5 hover:bg-gray-200 ${listFilter === 'LOWEST_PRICE' && 'bg-gray-400'}`}></button>
+            <button onClick={() => setListFilter('LOWEST_PRICE')} className={`border-2 mr-2 border-red-700 ease-in-out duration-100 rounded-full p-1.5 hover:bg-red-200 ${listFilter === 'LOWEST_PRICE' && 'bg-red-300'}`}></button>
             <p className="text-sm">Cheap to Expensive</p>
           </div>
           <div className="flex w-full items-center justify-start">
-            <button onClick={() => setListFilter('HIGHEST_PRICE')} className={`border-2 mr-2 border-red-700 ease-in-out duration-100 rounded-full p-1.5 hover:bg-gray-200 ${listFilter === 'HIGHEST_PRICE' && 'bg-gray-400'}`}></button>
+            <button onClick={() => setListFilter('HIGHEST_PRICE')} className={`border-2 mr-2 border-red-700 ease-in-out duration-100 rounded-full p-1.5 hover:bg-red-200 ${listFilter === 'HIGHEST_PRICE' && 'bg-red-300'}`}></button>
             <p className="text-sm">Expensive to Cheap</p>
           </div>
           <div className="flex w-full items-center justify-start">
-            <button onClick={() => setListFilter('BEST_SELLERS')} className={`border-2 mr-2 border-red-700 ease-in-out duration-100 rounded-full p-1.5 hover:bg-gray-200 ${listFilter === 'BEST_SELLERS' && 'bg-gray-400'}`}></button>
+            <button onClick={() => setListFilter('BEST_SELLERS')} className={`border-2 mr-2 border-red-700 ease-in-out duration-100 rounded-full p-1.5 hover:bg-red-200 ${listFilter === 'BEST_SELLERS' && 'bg-red-300'}`}></button>
             <p className="text-sm">Rating</p>
           </div>
           <div className="flex w-full items-center justify-start">
-            <button onClick={() => setListFilter('RELEVANCE')} className={`border-2 mr-2 border-red-700 ease-in-out duration-100 rounded-full p-1.5 hover:bg-gray-200 ${listFilter === 'RELEVANCE' && 'bg-gray-400'}`}></button>
+            <button onClick={() => setListFilter('RELEVANCE')} className={`border-2 mr-2 border-red-700 ease-in-out duration-100 rounded-full p-1.5 hover:bg-red-200 ${listFilter === 'RELEVANCE' && 'bg-red-300'}`}></button>
             <p className="text-sm">A - Z</p>
           </div>
         </div>

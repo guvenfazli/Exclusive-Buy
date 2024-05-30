@@ -45,6 +45,13 @@ input[type='range']::-webkit-slider-thumb {
   background: white;
   border: 3px solid #B91C1C;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+  width: 17px;
+  height: 17px;
+
 }
 
 input[type="checkbox"] {
