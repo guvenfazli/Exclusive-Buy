@@ -15,8 +15,9 @@ export default function SearchResultPage({ params }) {
   const [results, setResults] = useState()
   const [loading, setLoading] = useState(false)
   const [isOnSale, setIsOnSale] = useState(false)
-  const [listFilter, setListFilter] = useState()
+  const [listFilter, setListFilter] = useState('RELEVANCE')
   const [filterSearch, setFilterSearch] = useState()
+  const [condition, setCondition] = useState('ALL')
 
   useEffect(() => {
     async function search() {
@@ -29,21 +30,23 @@ export default function SearchResultPage({ params }) {
     search()
   }, [])
 
-  async function filterResults(listFilter, priceFilter) {
+  async function filterResults(listFilter, priceFilter, condition) {
     setLoading(true)
-    const data = await filterListing(listFilter, priceFilter, keyWord)
-    console.log(data)
+    const data = await filterListing(listFilter, priceFilter, condition, keyWord)
     setFilterSearch(data)
     setLoading(false)
   }
 
-
-
-
   return (
     <div className="p-4 flex w-full">
-      <ResultNavBar priceFilter={priceFilter} setPriceFilter={setPriceFilter} isOnSale={isOnSale} setIsOnSale={setIsOnSale} setListFilter={setListFilter} listFilter={listFilter} filterResults={filterResults} />
-      {loading ? <Loading /> : <Results keyWord={keyWord} results={results} filterSearch={filterSearch} />}
+      <ResultNavBar priceFilter={priceFilter} setPriceFilter={setPriceFilter} isOnSale={isOnSale} setIsOnSale={setIsOnSale} setListFilter={setListFilter} listFilter={listFilter} filterResults={filterResults} condition={condition} setCondition={setCondition} />
+      <div className="flex w-full flex-col">
+        
+        
+        <div className="flex w-full">
+          {loading ? <Loading /> : <Results keyWord={keyWord} results={results} filterSearch={filterSearch} />}
+        </div>
+      </div>
     </div>
   )
 }

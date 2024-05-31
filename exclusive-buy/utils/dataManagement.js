@@ -2,7 +2,7 @@ export default async function fetchDealItems() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '0513a73532mshe0479d6629e987ep131dc3jsn11cda4747b33',
+      'X-RapidAPI-Key': '679ade5fe0msh7eddc8bc070474dp11c057jsn9c09786149d6',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
@@ -17,7 +17,7 @@ export async function fetchByCategory(category, pageNumber) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '0513a73532mshe0479d6629e987ep131dc3jsn11cda4747b33',
+      'X-RapidAPI-Key': '679ade5fe0msh7eddc8bc070474dp11c057jsn9c09786149d6',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
@@ -32,7 +32,7 @@ export async function fetchDetails(itemId) {
   const options = {
     method: 'GET',
     headers: {
-      'x-rapidapi-key': '0513a73532mshe0479d6629e987ep131dc3jsn11cda4747b33',
+      'x-rapidapi-key': '679ade5fe0msh7eddc8bc070474dp11c057jsn9c09786149d6',
       'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com',
       'Content-Type': 'application/json'
     }
@@ -48,7 +48,7 @@ export async function searchProduct(keyWord) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '0513a73532mshe0479d6629e987ep131dc3jsn11cda4747b33',
+      'X-RapidAPI-Key': '679ade5fe0msh7eddc8bc070474dp11c057jsn9c09786149d6',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
@@ -59,15 +59,15 @@ export async function searchProduct(keyWord) {
   return data
 }
 
-export async function filterListing(listFilter, priceFilter, keyWord) {
+export async function filterListing(listFilter, priceFilter, condition, keyWord) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '0513a73532mshe0479d6629e987ep131dc3jsn11cda4747b33',
+      'X-RapidAPI-Key': '679ade5fe0msh7eddc8bc070474dp11c057jsn9c09786149d6',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
-  const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=1&country=US&sort_by=${listFilter}&min_price=${priceFilter.min}&max_price=${priceFilter.max}&product_condition=ALL`, options);
+  const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=1&country=US&sort_by=${listFilter}&min_price=${priceFilter.min}&max_price=${priceFilter.max}&product_condition=${condition}`, options);
   const resData = await response.json();
   const data = resData.data.products
   return data

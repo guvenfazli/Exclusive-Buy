@@ -13,7 +13,6 @@ export default function CategoryItems({ category, pageNumber }) {
       setLoading(true)
       const data = await fetchByCategory(category, pageNumber)
       setLoading(false)
-      console.log(data)
       setCategoryData(data)
     }
 

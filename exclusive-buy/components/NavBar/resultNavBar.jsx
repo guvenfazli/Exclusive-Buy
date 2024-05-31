@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 
-export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, setIsOnSale, setListFilter, listFilter, filterResults }) {
+export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, setIsOnSale, setListFilter, listFilter, filterResults, condition, setCondition }) {
 
   const minPrice = useRef()
   const maxPrice = useRef()
@@ -55,7 +55,7 @@ export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, se
           </div>
           <div className="flex w-full items-center justify-start">
             <button onClick={() => setListFilter('BEST_SELLERS')} className={`border-2 mr-2 border-red-700 ease-in-out duration-100 rounded-full p-1.5 hover:bg-red-200 ${listFilter === 'BEST_SELLERS' && 'bg-red-300'}`}></button>
-            <p className="text-sm">Rating</p>
+            <p className="text-sm">Best Sellers</p>
           </div>
           <div className="flex w-full items-center justify-start">
             <button onClick={() => setListFilter('RELEVANCE')} className={`border-2 mr-2 border-red-700 ease-in-out duration-100 rounded-full p-1.5 hover:bg-red-200 ${listFilter === 'RELEVANCE' && 'bg-red-300'}`}></button>
@@ -63,8 +63,24 @@ export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, se
           </div>
         </div>
       </div>
+      <div className="flex border-b py-2 gap-y-2 flex-col">
+        <p className="text-lg">Condition</p>
+        <div className="flex items-center justify-start">
+          <input onClick={() => setCondition('NEW')} type="checkbox" id="yes" name="yes" checked={condition === 'NEW'} className="w-3 mr-1 h-3 cursor-pointer" />
+          <p className="text-sm">New</p>
+        </div>
+        <div className="flex items-center justify-start">
+          <input onClick={() => setCondition('USED')} type="checkbox" id="yes" name="yes" checked={condition === 'USED'} className="w-3 mr-1 h-3 cursor-pointer" />
+          <p className="text-sm">Used</p>
+        </div>
+        <div className="flex items-center justify-start">
+          <input onClick={() => setCondition('ALL')} type="checkbox" id="yes" name="yes" checked={condition === 'ALL'} className="w-3 mr-1 h-3 cursor-pointer" />
+          <p className="text-sm">All</p>
+        </div>
+
+      </div>
       <div className="flex justify-center items-center">
-        <button onClick={() => filterResults(listFilter, priceFilter)} className="bg-red-700 px-5 rounded-md py-1 text-lg text-white duration-75 ease-in-out hover:bg-red-800">Filter</button>
+        <button onClick={() => filterResults(listFilter, priceFilter, condition)} className="bg-red-700 px-5 rounded-md py-1 text-lg text-white duration-75 ease-in-out hover:bg-red-800">Filter</button>
       </div>
 
     </div>
