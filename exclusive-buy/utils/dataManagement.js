@@ -44,7 +44,7 @@ export async function fetchDetails(itemId) {
   return data
 }
 
-export async function searchProduct(keyWord) {
+export async function searchProduct(page, keyWord) {
   const options = {
     method: 'GET',
     headers: {
@@ -53,13 +53,13 @@ export async function searchProduct(keyWord) {
     }
   };
 
-  const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=1&country=US`, options)
+  const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=${page}&country=US`, options)
   const resData = await response.json()
   const data = resData.data.products
   return data
 }
 
-export async function filterListing(listFilter, priceFilter, condition, keyWord) {
+export async function filterListing(listFilter, priceFilter, page, condition, keyWord) {
   const options = {
     method: 'GET',
     headers: {
@@ -67,7 +67,7 @@ export async function filterListing(listFilter, priceFilter, condition, keyWord)
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
-  const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=1&country=US&sort_by=${listFilter}&min_price=${priceFilter.min}&max_price=${priceFilter.max}&product_condition=${condition}`, options);
+  const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=${page}&country=US&sort_by=${listFilter}&min_price=${priceFilter.min}&max_price=${priceFilter.max}&product_condition=${condition}`, options);
   const resData = await response.json();
   const data = resData.data.products
   return data
