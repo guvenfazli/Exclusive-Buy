@@ -51,7 +51,7 @@ export default function SearchResultPage({ params }) {
 
   return (
     <div className="p-4 flex w-full">
-      <ResultNavBar priceFilter={priceFilter} setPriceFilter={setPriceFilter} isOnSale={isOnSale} setIsOnSale={setIsOnSale} setListFilter={setListFilter} listFilter={listFilter} filterResults={filterResults} condition={condition} setCondition={setCondition} />
+      <ResultNavBar priceFilter={priceFilter} setPriceFilter={setPriceFilter} isOnSale={isOnSale} setIsOnSale={setIsOnSale} setListFilter={setListFilter} listFilter={listFilter} filterResults={filterResults} condition={condition} setCondition={setCondition} setPage={setPage} />
       <div className="flex w-full flex-col">
 
 

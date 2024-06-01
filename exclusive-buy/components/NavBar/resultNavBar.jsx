@@ -2,7 +2,7 @@
 
 import { useRef } from "react"
 
-export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, setIsOnSale, setListFilter, listFilter, filterResults, condition, setCondition }) {
+export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, setIsOnSale, setListFilter, listFilter, filterResults, condition, setCondition, setPage }) {
 
   const minPrice = useRef()
   const maxPrice = useRef()
@@ -13,6 +13,7 @@ export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, se
       newPrice[price] = priceType.current.value
       return newPrice
     })
+    setPage(1)
   }
 
 
