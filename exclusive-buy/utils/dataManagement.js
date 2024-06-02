@@ -53,7 +53,7 @@ export async function searchProduct(page, keyWord) {
     }
   };
 
-  const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=${page}&country=US`, options)
+  const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=1&country=US`, options)
   const resData = await response.json()
   const data = resData.data.products
   return data

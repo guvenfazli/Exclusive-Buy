@@ -8,7 +8,7 @@ import { Cart } from '@/store/Cart'
 import SearchResults from "@/components/searchResults/searchResults"
 import Link from 'next/link'
 import { AnimatePresence } from 'framer-motion'
-
+import SearchLoader from "@/components/loading/searchLoader"
 export default function Header() {
 
   const cartCtx = useContext(Cart)
@@ -25,21 +25,17 @@ export default function Header() {
   const searchWord = useRef()
 
   function setSearchWord() {
-    setTimeout(() => {
-      setKeyWord(searchWord.current?.value)
-    }, 800)
+    setKeyWord(searchWord.current?.value)
+
   }
 
-
+  console.log(keyWord)
   useEffect(() => {
-    if (keyWord.length > 2) {
+    if (keyWord.length > 0) {
       async function setData() {
-        const animationTimer = setInterval(() => {
-          setLoading((prev) => !prev)
-        }, 800)
+        setLoading(true)
         const data = await searchProduct(keyWord)
         setSearchResult(data)
-        clearInterval(animationTimer)
         setLoading(false)
       }
       setData()
@@ -62,10 +58,11 @@ export default function Header() {
         <button className="text-black ease-in-out duration-75 hover:border-b text-lg border-black">Sign Up</button>
       </div>
 
+
       <div className="flex p-3 items-center justify-between max-md:w-full max-sm:justify-center">
         <div className={`flex justify-between relative items-center rounded-md focus:outline-none focus:ring-0 focus:border-transparent ${loading ? 'bg-gray-200' : 'bg-gray-100'} px-3`}>
           <input onMouseEnter={() => setIsVisible(true)} ref={searchWord} onChange={setSearchWord} className={`bg-transparent duration-100 ease-in-out p-3 text-black focus:outline-none focus:border-transparent transition-none focus:ring-0`} placeholder="What are you looking for?" />
-          <Link href={`/searchResults/${keyWord}`} className='cursor-pointer'>{searchGlass}</Link>
+          <Link href={`/searchResults/${keyWord}`} className='cursor-pointer'>{loading ? <SearchLoader /> : searchGlass}</Link>
           {searchResult &&
             <AnimatePresence>
               <SearchResults result={searchResult} isVisible={isVisible} setIsVisible={setIsVisible} />

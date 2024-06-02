@@ -21,8 +21,8 @@ export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, se
     <div className="flex gap-y-4 flex-col">
       <div className="flex relative py-2 flex-col gap-y-4 w-full">
         <p className="text-lg">Price</p>
-        <input placeholder="Min" value={priceFilter.min} className="border p-1" />
-        <input placeholder="Max" value={priceFilter.max} className="border p-1" />
+        <input placeholder="Min" value={priceFilter.min} onChange={() => changePriceFilter('min', minPrice)} ref={minPrice} className="border p-1" />
+        <input placeholder="Max" value={priceFilter.max} onChange={() => changePriceFilter('max', maxPrice)} ref={maxPrice} className="border p-1" />
         <div className="flex items-center">
           <div className="flex w-1/2">
             <input type="range" onChange={() => changePriceFilter('min', minPrice)} ref={minPrice} min="0" max="1000" className="flex w-full left-0 bottom-1" />
