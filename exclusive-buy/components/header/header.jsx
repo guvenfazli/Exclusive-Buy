@@ -25,11 +25,11 @@ export default function Header() {
   const searchWord = useRef()
 
   function setSearchWord() {
-    setKeyWord(searchWord.current?.value)
+    setTimeout(() => { setKeyWord(searchWord.current?.value) }, 1500)
+
 
   }
 
-  console.log(keyWord)
   useEffect(() => {
     if (keyWord.length > 0) {
       async function setData() {
@@ -43,7 +43,6 @@ export default function Header() {
       setSearchResult('')
     }
   }, [keyWord])
-
 
   return (
     <header className="flex justify-between items-center p-3 bg-white border-b border-gray-200 whitespace-nowrap">

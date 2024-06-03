@@ -44,7 +44,7 @@ export async function fetchDetails(itemId) {
   return data
 }
 
-export async function searchProduct(page, keyWord) {
+export async function searchProduct(keyWord) {
   const options = {
     method: 'GET',
     headers: {
@@ -52,7 +52,7 @@ export async function searchProduct(page, keyWord) {
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
-
+  console.log(keyWord)
   const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=1&country=US`, options)
   const resData = await response.json()
   const data = resData.data.products
