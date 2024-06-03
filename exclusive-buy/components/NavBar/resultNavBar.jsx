@@ -1,6 +1,6 @@
 "use client"
 
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, setIsOnSale, setListFilter, listFilter, filterResults, condition, setCondition, setPage }) {
 
@@ -16,10 +16,13 @@ export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, se
     setPage(1)
   }
 
+  const [isNav, setIsNav] = useState(false)
+
 
   return (
-    <div className="flex gap-y-4 flex-col">
+    <div className={`flex gap-y-4 flex-col relative  max-md:absolute max-md:-left-96 max-md:z-10 ${isNav && 'max-md:left-0 max-md:bg-white max-md:border p-3'}`}>
       <div className="flex relative py-2 flex-col gap-y-4 w-full">
+
         <p className="text-lg">Price</p>
         <input placeholder="Min" value={priceFilter.min} onChange={() => changePriceFilter('min', minPrice)} ref={minPrice} className="border p-1" />
         <input placeholder="Max" value={priceFilter.max} onChange={() => changePriceFilter('max', maxPrice)} ref={maxPrice} className="border p-1" />
@@ -38,11 +41,15 @@ export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, se
           <input onClick={() => setIsOnSale(true)} type="checkbox" id="yes" name="yes" checked={isOnSale} className="w-3 mr-1 h-3 cursor-pointer" />
           <p className="text-sm">Yes</p>
         </div>
+
         <div className="flex py-2 items-center justify-start">
           <input onClick={() => setIsOnSale(false)} type="checkbox" id="yes" name="yes" checked={!isOnSale} className="w-3 mr-1 h-3 cursor-pointer" />
           <p className="text-sm">No</p>
         </div>
       </div>
+
+      <button onClick={() => setIsNav((prev) => !prev)} className={`bg-red-700 invisible px-5 rounded-md py-1 absolute -right-48 text-xs text-white duration-75 ease-in-out hover:bg-red-800 ${isNav && 'max-md:right-0'} max-md:visible`}>Filters</button>
+
       <div className="flex border-b py-2 gap-y-2 flex-col">
         <p className="text-lg">Listing</p>
         <div className="flex flex-col items-start gap-y-2">

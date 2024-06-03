@@ -25,7 +25,6 @@ export default function CartPage() {
   }, [cartCtx.cart])
 
 
-  console.log(cartCtx.cart)
 
   function manageQuantity(item, option) {
     if (option === '+') {
