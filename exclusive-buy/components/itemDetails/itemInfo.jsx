@@ -120,13 +120,16 @@ export default function ItemInfo({ itemId }) {
             <div className="flex flex-col justify-around border h-80 w-1/6 items-center p-4">
               <p className="text-xl font-bold text-red-600">{product?.product_price + '$'}</p>
               <p className="text-sm line-through text-gray-600">{product?.product_original_price}</p>
-              <p className={`text-green-700`}>{product?.product_availability ? product?.product_availability : 'In Stock' }</p>
+              <p className={`text-green-700`}>{product?.product_availability ? product?.product_availability : 'In Stock'}</p>
               <button onClick={() => addToCart()} className="bg-red-700 rounded-2xl text-white p-2 w-full ease-in-out duration-100 hover:bg-red-800">Add to Cart</button>
               <button onClick={() => addToWishList()} className="bg-red-700 rounded-2xl text-white p-2 w-full ease-in-out duration-100 hover:bg-red-800">Add to Wishlist</button>
             </div>
           </div>
+          <div className="w-full mb-4 flex justify-center items-center">
+            <p className="text-2xl text-red-700 font-bold">Users Also Searched For</p>
+          </div>
           <div className="flex w-full gap-y-4 gap-x-4 flex-wrap justify-around items-start">
-            {similarItems && similarItems.map((item) => <SimilarProducts key={item.asin} similarItems={item} />)}
+            {similarItems ? similarItems.map((item) => <SimilarProducts key={item.asin} similarItems={item} />) : <p>We could not find similar items.</p>}
           </div>
         </>
       }

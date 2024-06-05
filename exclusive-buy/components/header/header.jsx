@@ -47,7 +47,7 @@ export default function Header() {
   return (
     <header className="flex justify-between items-center p-3 bg-white border-b border-gray-200 whitespace-nowrap max-sm:flex-col">
       <div className="flex p-3 ">
-        <p className="text-black text-xl font-bold max-lg:text-base max-lg:whitespace-normal max-lg:text-center">Exclusive Buy</p>
+        <Link href={'/'} className="text-black text-xl font-bold max-lg:text-base max-lg:whitespace-normal max-lg:text-center">Exclusive Buy</Link>
       </div>
 
       <div className="flex p-3 items-center justify-between max-lg:p-1 max-md:hidden">
@@ -57,8 +57,7 @@ export default function Header() {
         <button className="text-black ease-in-out duration-75 hover:border-b text-lg border-black">Sign Up</button>
       </div>
 
-
-      <div className="flex p-3 items-center justify-between max-md:w-full max-sm:justify-center max-sm:flex-col">
+      <div className="flex p-3 items-center justify-between max-md:w-full max-sm:justify-center max-sm:flex-col max-sm:pb-0">
         <div className={`flex justify-between relative items-center rounded-md focus:outline-none focus:ring-0 focus:border-transparent ${loading ? 'bg-gray-200' : 'bg-gray-100'} px-3 max-sm:mb-4`}>
           <input onMouseEnter={() => setIsVisible(true)} ref={searchWord} onChange={setSearchWord} className={`bg-transparent duration-100 ease-in-out p-3 text-black focus:outline-none focus:border-transparent transition-none focus:ring-0`} placeholder="What are you looking for?" />
           <Link href={`/searchResults/${keyWord}`} className='cursor-pointer'>{loading ? <SearchLoader /> : searchGlass}</Link>
