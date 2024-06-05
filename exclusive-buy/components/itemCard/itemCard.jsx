@@ -133,7 +133,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         <div className="flex flex-row items-center justify-between" >
           <button onClick={() => addToCart(categoryItem)} className={`bg-red-600 ease-in-out duration-100 p-2 rounded-full hover:bg-red-700 ${addedToCart && 'bg-green-700'}`}>{addToCartIcon}</button>
           <AnimatePresence>
-            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-lg border px-3 bg-red-600 text-white rounded-3xl ">Added</motion.p>}
+            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-lg border px-3 bg-red-600 text-white rounded-3xl ">Added!</motion.p>}
           </AnimatePresence>
           <button onClick={() => addToWishList(categoryItem)} disabled={alreadyInWish} className={`bg-red-600 ease-in-out duration-100 p-2 rounded-full hover:bg-red-700 ${alreadyInWish && 'bg-green-700'} disabled:bg-green-500`}>{addToWishListIcon}</button>
         </div>
