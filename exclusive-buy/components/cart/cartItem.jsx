@@ -2,8 +2,16 @@ import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
 export default function CartItem({ item, manageQuantity }) {
 
-  const itemPrice = item?.quantity * item.deal_price?.amount || parseInt(item.product_price.replaceAll('$', '')) * item?.quantity
+  let itemPrice;
 
+  if (item.deal_price) {
+    itemPrice = item?.quantity * item.deal_price?.amount
+  } else if (item.product_price) {
+    let fixedPrice = item.product_price.replaceAll('$', '')
+    itemPrice = parseInt(fixedPrice) * item?.quantity
+  }
+
+  console.log(item)
   return (
     <AnimatePresence>
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="border p-3 w-4/5 flex justify-around items-center rounded-lg max-md:w-full max-[460px]:flex-col">
@@ -21,7 +29,7 @@ export default function CartItem({ item, manageQuantity }) {
             <button className="px-1 text-xs text-white bg-red-700 rounded-full" onClick={() => manageQuantity(item, '+')}>+</button>
           </div>
           <p className="text-lg text-red-700">{itemPrice?.toFixed(2)} $</p>
-          
+
         </div>
       </motion.div>
     </AnimatePresence>

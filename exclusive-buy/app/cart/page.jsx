@@ -62,7 +62,7 @@ export default function CartPage() {
 
   if (cartCtx.cart.length >= 1) {
     return (
-      <div className="flex justify-around w-full px-4 items-start py-4 max-md:flex-col max-md:items-center max-md:gap-y-4">
+      <div className="flex justify-between w-full px-4 items-start py-4 max-md:flex-col max-md:items-center max-md:gap-y-4">
         <div className="flex flex-col gap-y-10">
           {cartCtx.cart.map((item) => <CartItem key={item.product_asin} item={item} manageQuantity={manageQuantity} />)}
         </div>

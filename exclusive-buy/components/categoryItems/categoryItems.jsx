@@ -18,6 +18,7 @@ export default function CategoryItems({ category, pageNumber }) {
 
     fetchData()
   }, [category, pageNumber])
+  
 
   return (
     <div className="flex flex-row flex-wrap gap-x-4 gap-y-4 justify-center items-start">
