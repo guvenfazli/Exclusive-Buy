@@ -11,7 +11,7 @@ export default function WishListItem({ item, addToCart, removeWish }) {
           {item?.product_photo && <Image src={item.product_photo} fill style={{ objectFit: 'contain' }} alt="Product Image" />}
         </div>
         <div className="flex flex-col items-start w-full text-wrap p-2">
-          <Link href={item.asin || item.product_asin} className="leading-8 text-lg mb-4 hover:underline max-md:text-base">{item?.deal_title || item?.product_title}</Link>
+          <Link href={`/${item.asin || item.product_asin}`} className="leading-8 text-lg mb-4 hover:underline max-md:text-base">{item?.deal_title || item?.product_title}</Link>
           <p className="text-lg text-red-700">{item?.product_price || '$' + item?.deal_price.amount}</p>
         </div>
         <div className="flex text-nowrap items-center justify-around">

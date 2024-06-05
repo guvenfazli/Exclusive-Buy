@@ -22,7 +22,7 @@ export default function CartNavBar({ total }) {
       </div>
       <p className={`text-lg ${isFreeShipment && 'line-through text-gray-400'}`}>Shipment: 12$</p>
       <div className="p-2 border-t flex flex-col justify-between w-full items-center">
-        <p className="text-lg mb-4"><span className="text-xl text-red-700 font-bold">Total:</span> {isFreeShipment ? total?.toFixed(2) : (total + 12).toFixed(2)}$</p>
+        <p className="text-lg mb-4"><span className="text-xl text-red-700 font-bold">Total:</span> {isFreeShipment ? total?.toFixed(2) : (total + 12).toFixed(2)} $ <span className="text-xs">Tax included.</span></p>
         <button className="w-full border bg-red-700 duration-150 ease-in-out text-white text-xl p-2 hover:bg-red-800 text-nowrap">Confirm the Order</button>
       </div>
     </div>

@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { motion, AnimatePresence } from "framer-motion"
+import Link from "next/link";
 export default function CartItem({ item, manageQuantity }) {
 
   let itemPrice;
@@ -20,7 +21,7 @@ export default function CartItem({ item, manageQuantity }) {
           {item?.product_photo && <Image src={item.product_photo} fill style={{ objectFit: 'contain' }} alt="Product Image" />}
         </div>
         <div className="w-full text-wrap p-2">
-          <p className="leading-8 text-lg  max-md:text-base">{item?.deal_title || item?.product_title}</p>
+          <Link href={`/${item.asin || item.product_asin}`} className="leading-8 hover:underline text-lg max-md:text-base ">{item?.deal_title || item?.product_title}</Link>
         </div>
         <div className="flex flex-col w-40 items-center justify-center">
           <div className="flex justify-between w-full items-center mb-4">

@@ -45,8 +45,8 @@ export default function Header() {
   }, [keyWord])
 
   return (
-    <header className="flex justify-between items-center p-3 bg-white border-b border-gray-200 whitespace-nowrap">
-      <div className="flex p-3 max-lg:hidden">
+    <header className="flex justify-between items-center p-3 bg-white border-b border-gray-200 whitespace-nowrap max-sm:flex-col">
+      <div className="flex p-3 ">
         <p className="text-black text-xl font-bold max-lg:text-base max-lg:whitespace-normal max-lg:text-center">Exclusive Buy</p>
       </div>
 
@@ -58,8 +58,8 @@ export default function Header() {
       </div>
 
 
-      <div className="flex p-3 items-center justify-between max-md:w-full max-sm:justify-center">
-        <div className={`flex justify-between relative items-center rounded-md focus:outline-none focus:ring-0 focus:border-transparent ${loading ? 'bg-gray-200' : 'bg-gray-100'} px-3`}>
+      <div className="flex p-3 items-center justify-between max-md:w-full max-sm:justify-center max-sm:flex-col">
+        <div className={`flex justify-between relative items-center rounded-md focus:outline-none focus:ring-0 focus:border-transparent ${loading ? 'bg-gray-200' : 'bg-gray-100'} px-3 max-sm:mb-4`}>
           <input onMouseEnter={() => setIsVisible(true)} ref={searchWord} onChange={setSearchWord} className={`bg-transparent duration-100 ease-in-out p-3 text-black focus:outline-none focus:border-transparent transition-none focus:ring-0`} placeholder="What are you looking for?" />
           <Link href={`/searchResults/${keyWord}`} className='cursor-pointer'>{loading ? <SearchLoader /> : searchGlass}</Link>
           {searchResult &&
@@ -69,7 +69,7 @@ export default function Header() {
           }
         </div>
 
-        <div className="flex p-3 items-center justify-between ml-12 max-lg:p-1 max-lg:ml-7 max-sm:hidden">
+        <div className="flex p-3 items-center justify-between ml-12 max-lg:p-1 max-lg:ml-7">
           <div className='flex justify-center items-center p-3 relative'>
             <Link href={'/cart'}>{cartIcon}</Link>
             <p className='absolute top-0 bg-red-700 px-1.5 left-2 rounded-full text-sm text-white'>{cartItemsQuantity}</p>
