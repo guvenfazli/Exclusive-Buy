@@ -100,7 +100,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         <div className="flex flex-row items-center justify-between" >
           <button onClick={() => addToCart(item)} className={`duration-150 ease-in-out ${addedToCart ? 'bg-green-600' : 'bg-red-600'} p-2 rounded-full`}>{addToCartIcon}</button>
           <AnimatePresence>
-            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-lg border px-3 bg-red-700 text-white rounded-3xl">Added!</motion.p>}
+            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-sm border px-3 bg-red-600 text-white rounded-3xl ">Added!</motion.p>}
           </AnimatePresence>
           <button onClick={() => addToWishList(item)} disabled={alreadyInWish} className={`duration-150 ease-in-out ${addedToWish ? 'bg-green-600' : 'bg-red-600'} p-2 rounded-full disabled:bg-green-500`}>{addToWishListIcon}</button>
         </div>
@@ -109,7 +109,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
     )
   } else if (!hot && categoryItem) {
     return (
-      <div className={`flex flex-col flex-shrink-0 flex-grow-0 duration-700 ease-in-out justify-between w-1/5 p-4 border max-lg:w-1/4 max-md:w-1/3 max-sm:w-full`}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`flex flex-col flex-shrink-0 flex-grow-0 duration-700 ease-in-out justify-between w-1/5 p-4 border max-lg:w-1/4 max-md:w-1/3 max-sm:w-full`}>
         <div className="mb-4 relative h-60 w-full">
           {categoryItem?.product_photo && <Image src={categoryItem.product_photo} fill style={{ objectFit: 'contain' }} alt="Product Image" />}
         </div>
@@ -133,12 +133,12 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         <div className="flex flex-row items-center justify-between" >
           <button onClick={() => addToCart(categoryItem)} className={`bg-red-600 ease-in-out duration-100 p-2 rounded-full hover:bg-red-700 ${addedToCart && 'bg-green-700'}`}>{addToCartIcon}</button>
           <AnimatePresence>
-            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-lg border px-3 bg-red-600 text-white rounded-3xl ">Added!</motion.p>}
+            {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-sm border px-3 bg-red-600 text-white rounded-3xl ">Added!</motion.p>}
           </AnimatePresence>
           <button onClick={() => addToWishList(categoryItem)} disabled={alreadyInWish} className={`bg-red-600 ease-in-out duration-100 p-2 rounded-full hover:bg-red-700 ${alreadyInWish && 'bg-green-700'} disabled:bg-green-500`}>{addToWishListIcon}</button>
         </div>
 
-      </div>
+      </motion.div>
     )
   }
 

@@ -20,7 +20,7 @@ export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, se
 
 
   return (
-    <div className={`flex gap-y-4 flex-col relative  max-md:absolute max-md:-left-96 max-md:z-10 ${isNav && 'max-md:left-0 max-md:bg-white max-md:border p-3'}`}>
+    <div className={`flex gap-y-4 flex-col duration-100 ease-in-out relative max-md:absolute max-md:-left-96 max-md:z-10 ${isNav && 'max-md:left-0 max-md:bg-white max-md:border p-3'}`}>
       <div className="flex relative py-2 flex-col gap-y-4 w-full">
 
         <p className="text-lg">Price</p>
@@ -48,7 +48,7 @@ export default function ResultNavBar({ priceFilter, setPriceFilter, isOnSale, se
         </div>
       </div>
 
-      <button onClick={() => setIsNav((prev) => !prev)} className={`bg-red-700 invisible px-5 rounded-md py-1 absolute -right-48 text-xs text-white duration-75 ease-in-out hover:bg-red-800 ${isNav && 'max-md:right-0'} max-md:visible`}>Filters</button>
+      <button onClick={() => setIsNav((prev) => !prev)} className={`bg-red-800 invisible px-5 rounded-md py-1 absolute -right-48 text-xs text-white duration-75 ease-in-out hover:bg-red-800 ${isNav && 'max-md:right-0'} max-md:visible`}>Filters</button>
 
       <div className="flex border-b py-2 gap-y-2 flex-col">
         <p className="text-lg">Listing</p>
