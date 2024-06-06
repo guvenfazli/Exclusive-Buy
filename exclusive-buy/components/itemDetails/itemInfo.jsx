@@ -6,7 +6,7 @@ import { fetchDetails } from "../../utils/dataManagement"
 import Image from "next/image"
 import SimilarProducts from "./SimilarProducts"
 import Loading from "../loading/loading"
-
+import { bestSelling, notBestSelling } from "../itemCard/itemCardIcons"
 export default function ItemInfo({ itemId }) {
 
   const [product, setProduct] = useState()
@@ -92,7 +92,7 @@ export default function ItemInfo({ itemId }) {
               <div className="flex flex-col justify-start items-start mb-2">
                 <p className="text-xl font-bold mb-2 text-red-600">Product Specs</p>
                 <div>
-                  {product?.about_product.map((row) => <p className="mb-2">{row}</p>)}
+                  {product?.about_product.map((row) => <p key={row} className="mb-2">{row}</p>)}
                 </div>
               </div>
 
@@ -120,6 +120,10 @@ export default function ItemInfo({ itemId }) {
             <div className="flex flex-col justify-around border h-80 w-1/6 items-center p-4">
               <p className="text-xl font-bold text-red-600">{product?.product_price + '$'}</p>
               <p className="text-sm line-through text-gray-600">{product?.product_original_price}</p>
+              <div className="flex items-center">
+                <p className="mr-2 text-sm">Best Selling:</p>
+                {product?.is_best_seller ? bestSelling : notBestSelling}
+              </div>
               <p className={`text-green-700`}>{product?.product_availability ? product?.product_availability : 'In Stock'}</p>
               <button onClick={() => addToCart()} className="bg-red-700 rounded-2xl text-white p-2 w-full ease-in-out duration-100 hover:bg-red-800">Add to Cart</button>
               <button onClick={() => addToWishList()} className="bg-red-700 rounded-2xl text-white p-2 w-full ease-in-out duration-100 hover:bg-red-800">Add to Wishlist</button>

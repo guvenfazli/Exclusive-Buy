@@ -6,7 +6,7 @@ import { searchProduct, filterListing } from '@/utils/dataManagement'
 import Loading from "@/components/loading/loading"
 import { nextArrow } from "@/components/itemShowcase/showcaseIcons"
 import { prevArrow } from "@/components/itemShowcase/showcaseIcons"
-
+import { bestSelling } from "@/components/itemCard/itemCardIcons"
 
 export default function SearchResultPage({ params }) {
 
@@ -58,13 +58,18 @@ export default function SearchResultPage({ params }) {
         <div className="flex flex-col w-full">
           <div className="w-full px-8 flex justify-between items-center mb-4">
 
-            <div className="flex w-1/6 py-2 border rounded-2xl justify-around items-center max-md:w-1/2 max-lg:w-1/2">
+            <div className="flex w-1/5 py-2 border rounded-2xl justify-around items-center max-md:w-1/2 max-lg:w-1/2">
               <div className="flex">
                 <p className="text-sm text-black">{(listFilter === 'RELEVANCE' && 'Relevance') || (listFilter === 'LOWEST_PRICE' && 'Cheap to Expensive') || (listFilter === 'HIGHEST_PRICE' && 'Expensive to Cheap') || (listFilter === 'BEST_SELLERS' && 'Best Sellers')}</p>
               </div>
 
               <div className="flex">
                 <p className="text-sm">{condition}</p>
+              </div>
+
+              <div className="flex items-center flex-row">
+                <p className="text-sm mr-3">Best Seller:</p>
+                {bestSelling}
               </div>
             </div>
 
