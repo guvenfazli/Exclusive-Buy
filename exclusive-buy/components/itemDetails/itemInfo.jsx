@@ -133,7 +133,7 @@ export default function ItemInfo({ itemId }) {
             <p className="text-2xl text-red-700 font-bold">Users Also Searched For</p>
           </div>
           <div className="flex w-full gap-y-4 gap-x-4 flex-wrap justify-around items-start">
-            {similarItems ? similarItems.map((item) => <SimilarProducts key={item.asin} similarItems={item} />) : <p>We could not find similar items.</p>}
+            {similarItems ? similarItems.map((item) => <SimilarProducts key={item.asin} similarItems={item} />) : <p>No Similar Products Found.</p>}
           </div>
         </>
       }
