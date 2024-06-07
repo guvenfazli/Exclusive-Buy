@@ -8,7 +8,7 @@ import CategoryItems from "../categoryItems/categoryItems"
 
 export default function CategoryButtons() {
 
-  const [activeFilter, setActiveFilter] = useState('Phones')
+  const [activeFilter, setActiveFilter] = useState('Cell Phones')
   const [pageNumber, setPageNumber] = useState(1)
 
   function searchByCategory(category) {
@@ -28,9 +28,9 @@ export default function CategoryButtons() {
   return (
     <div className="flex flex-col w-full justify-around items-center">
       <div className="flex flex-wrap gap-y-4 w-full justify-around items-center mb-10">
-        <div onClick={() => searchByCategory('Phones')} className={`border flex flex-col cursor-pointer p-8 gap-y-4 min-w-40 justify-center items-center hover:bg-red-200 ease-in-out duration-100 ${activeFilter === 'Phones' && 'bg-red-700'} max-sm:min-w-10`}>
-          <p>{activeFilter === 'Phones' ? phonesActive : phonesIcon}</p>
-          <p className={`text-xl ${activeFilter === 'Phones' && 'text-white'} max-sm:text-sm`}>Phones</p>
+        <div onClick={() => searchByCategory('Cell Phones')} className={`border flex flex-col cursor-pointer p-8 gap-y-4 min-w-40 justify-center items-center hover:bg-red-200 ease-in-out duration-100 ${activeFilter === 'Cell Phones' && 'bg-red-700'} max-sm:min-w-10`}>
+          <p>{activeFilter === 'Cell Phones' ? phonesActive : phonesIcon}</p>
+          <p className={`text-xl ${activeFilter === 'Cell Phones' && 'text-white'} max-sm:text-sm`}>Phones</p>
         </div>
 
         <div onClick={() => searchByCategory('Laptops')} className={`border flex flex-col cursor-pointer p-8 gap-y-4 min-w-40 justify-center items-center hover:bg-red-200 ease-in-out duration-100 ${activeFilter === 'Laptops' && 'bg-red-700'} max-sm:min-w-10`}>
