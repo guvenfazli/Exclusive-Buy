@@ -131,7 +131,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         </div>
 
         <div className="flex flex-row items-center justify-between" >
-          <button onClick={() => addToCart(categoryItem)} className={`bg-red-600 ease-in-out duration-100 p-2 rounded-full hover:bg-red-700 ${addedToCart && 'bg-green-700'}`}>{addToCartIcon}</button>
+          <button onClick={() => addToCart(categoryItem)} className={`duration-150 ease-in-out ${addedToCart ? 'bg-green-600' : 'bg-red-600'} p-2 rounded-full`}>{addToCartIcon}</button>
           <AnimatePresence>
             {addedToCart && <motion.p initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="text-sm border px-3 bg-red-600 text-white rounded-3xl ">Added!</motion.p>}
           </AnimatePresence>
