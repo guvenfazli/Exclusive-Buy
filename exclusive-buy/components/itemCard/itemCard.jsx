@@ -124,7 +124,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
 
         <div className="flex w-full mb-4 justify-between items-center">
           <div>
-            <p className="text-gray-500 text-base">Rating: {categoryItem?.product_star_rating ? categoryItem?.product_star_rating : 4.7} Stars</p>
+            <p className="text-gray-500 text-base">Rating: {categoryItem?.product_star_rating ? categoryItem?.product_star_rating : 4.7}</p>
             <p className="text-gray-400 text-sm">{categoryItem?.product_num_ratings ? '(' + categoryItem?.product_num_ratings + ')' : '(' + 164 + ')'}</p>
           </div>
           {categoryItem?.is_best_seller && bestSelling}
