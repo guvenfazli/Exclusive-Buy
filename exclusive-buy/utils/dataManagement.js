@@ -2,7 +2,7 @@ export default async function fetchDealItems() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'e220bfe559mshca1b8c6eafaa224p1b6145jsn5d5eada0f124',
+      'X-RapidAPI-Key': '5d4123168bmsh702951918f786fdp1adaa9jsnc8d0c2a18fcf',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
@@ -17,7 +17,7 @@ export async function fetchByCategory(category, pageNumber) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'e220bfe559mshca1b8c6eafaa224p1b6145jsn5d5eada0f124',
+      'X-RapidAPI-Key': '5d4123168bmsh702951918f786fdp1adaa9jsnc8d0c2a18fcf',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
@@ -32,7 +32,7 @@ export async function fetchDetails(itemId) {
   const options = {
     method: 'GET',
     headers: {
-      'x-rapidapi-key': 'e220bfe559mshca1b8c6eafaa224p1b6145jsn5d5eada0f124',
+      'x-rapidapi-key': '5d4123168bmsh702951918f786fdp1adaa9jsnc8d0c2a18fcf',
       'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com',
       'Content-Type': 'application/json'
     }
@@ -48,7 +48,7 @@ export async function searchProduct(keyWord) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'e220bfe559mshca1b8c6eafaa224p1b6145jsn5d5eada0f124',
+      'X-RapidAPI-Key': '5d4123168bmsh702951918f786fdp1adaa9jsnc8d0c2a18fcf',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
@@ -63,7 +63,7 @@ export async function filterListing(listFilter, priceFilter, page, condition, ke
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': 'e220bfe559mshca1b8c6eafaa224p1b6145jsn5d5eada0f124',
+      'X-RapidAPI-Key': '5d4123168bmsh702951918f786fdp1adaa9jsnc8d0c2a18fcf',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
