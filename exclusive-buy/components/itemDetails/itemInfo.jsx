@@ -4,8 +4,10 @@ import { useEffect, useState, useContext } from "react"
 import { Cart } from "@/store/Cart"
 import { fetchDetails } from "../../utils/dataManagement"
 import Image from "next/image"
+import RatingStars from "@/components/ratingStars/ratingStars"
 import SimilarProducts from "./SimilarProducts"
 import Loading from "../loading/loading"
+import { motion } from "framer-motion"
 import { bestSelling, notBestSelling } from "../itemCard/itemCardIcons"
 export default function ItemInfo({ itemId }) {
 
@@ -14,6 +16,8 @@ export default function ItemInfo({ itemId }) {
   const [itemSpecs, setItemSpecs] = useState()
   const [imgIndex, setImgIndex] = useState(0)
   const [loading, setLoading] = useState(false)
+  const [alreadyInWish, setAlreadyInWish] = useState(false)
+  const [addedToWish, setAddedToWish] = useState(false)
   const itemPhotos = product?.product_photos.map((img) => img)
   const cartCtx = useContext(Cart)
 
@@ -30,10 +34,16 @@ export default function ItemInfo({ itemId }) {
       setItemSpecs(Object.entries(data.product_details))
       setSimilarItems(data.product_variations.style)
     }
-
-
     fetchProduct()
   }, [itemId])
+
+  useEffect(() => {
+    const sameItem = cartCtx.wishList.some((item) => itemId === item.asin)
+    if (sameItem) {
+      setAlreadyInWish(true)
+    }
+
+  }, [addedToWish])
 
   function addToCart() {
     let sameItem;
@@ -64,13 +74,17 @@ export default function ItemInfo({ itemId }) {
       updatedList.push(product)
       return updatedList
     })
+    setAddedToWish(true)
   }
+
+  const categoryRating = Math.round(+product?.product_star_rating)
+
 
   return (
     <div className="w-full">
       {loading ? <Loading /> :
         <>
-          <div className="flex w-full text-lg justify-around h-max p-4 items-start">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex w-full text-lg justify-around h-max p-4 items-start">
 
             <div className="relative w-1/5 h-96">
               {<Image src={itemPhotos && itemPhotos[imgIndex]} fill style={{ objectFit: 'contain' }} loading="lazy" alt="Product Image" />}
@@ -84,13 +98,14 @@ export default function ItemInfo({ itemId }) {
                 <p className="font-bold">{product?.product_title}</p>
               </div>
 
-              <div className="flex justify-start items-start mb-2">
-                <p><span className="font-bold mr-2 text-red-600">Rating:</span>{product?.product_star_rating} / 5 <span className="text-xs">{`(${product?.product_num_ratings})`}</span></p>
+              <div className="flex justify-start items-center mb-2">
+                <p className="mr-5"><span className="font-bold mr-2 text-red-700">Rating:</span>{product?.product_star_rating} / 5 <span className="text-xs">{`(${product?.product_num_ratings})`}</span></p>
+                <RatingStars rating={categoryRating} />
               </div>
 
 
               <div className="flex flex-col justify-start items-start mb-2">
-                <p className="text-xl font-bold mb-2 text-red-600">Product Specs</p>
+                <p className="text-xl font-bold mb-2 text-red-700">Product Specs</p>
                 <div>
                   {product?.about_product.map((row) => <p key={row} className="mb-2">{row}</p>)}
                 </div>
@@ -100,7 +115,7 @@ export default function ItemInfo({ itemId }) {
 
               {itemSpecs?.length > 0 &&
                 <div className="flex flex-col justify-start items-start mb-4">
-                  <p className="text-xl font-bold mb-2 text-red-600">Description</p>
+                  <p className="text-xl font-bold mb-2 text-red-700">Description</p>
 
                   <div>
                     {itemSpecs?.map((spec, index) => <p key={index} className="mb-2">{spec[0]}: {spec[1]}</p>)}
@@ -110,7 +125,7 @@ export default function ItemInfo({ itemId }) {
 
               <div className="flex flex-col justify-between items-start mb-4">
                 {product?.customers_say && <div>
-                  <p className="text-xl font-bold mb-2 text-red-600">Customer Overall Review</p>
+                  <p className="text-xl font-bold mb-2 text-red-700">Customer Overall Review</p>
                   <p>{product?.customers_say}</p>
                 </div>}
 
@@ -118,7 +133,7 @@ export default function ItemInfo({ itemId }) {
             </div>
 
             <div className="flex flex-col justify-around border h-80 w-1/6 items-center p-4">
-              <p className="text-xl font-bold text-red-600">{product?.product_price + '$'}</p>
+              <p className="text-xl font-bold text-red-700">{product?.product_price + '$'}</p>
               <p className="text-sm line-through text-gray-600">{product?.product_original_price}</p>
               <div className="flex items-center">
                 <p className="mr-2 text-sm">Best Selling:</p>
@@ -126,9 +141,9 @@ export default function ItemInfo({ itemId }) {
               </div>
               <p className={`text-green-700`}>{product?.product_availability ? product?.product_availability : 'In Stock'}</p>
               <button onClick={() => addToCart()} className="bg-red-700 rounded-2xl text-white p-2 w-full ease-in-out duration-100 hover:bg-red-800">Add to Cart</button>
-              <button onClick={() => addToWishList()} className="bg-red-700 rounded-2xl text-white p-2 w-full ease-in-out duration-100 hover:bg-red-800">Add to Wishlist</button>
+              <button onClick={() => addToWishList()} disabled={alreadyInWish} className="bg-red-700 rounded-2xl text-white p-2 w-full ease-in-out duration-100 hover:bg-red-800 disabled:bg-green-200">Add to Wishlist</button>
             </div>
-          </div>
+          </motion.div>
           <div className="w-full mb-4 flex justify-center items-center">
             <p className="text-2xl text-red-700 font-bold">Users Also Searched For</p>
           </div>

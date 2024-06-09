@@ -5,6 +5,7 @@ import { cartIcon } from './headerIcons'
 import { heartIcon } from './headerIcons'
 import { searchProduct } from '@/utils/dataManagement'
 import { Cart } from '@/store/Cart'
+import { motion } from 'framer-motion'
 import SearchResults from "@/components/searchResults/searchResults"
 import Link from 'next/link'
 import { AnimatePresence } from 'framer-motion'
@@ -47,7 +48,7 @@ export default function Header() {
   return (
     <header className="flex justify-between items-center p-3 bg-white border-b border-gray-200 whitespace-nowrap max-sm:flex-col">
       <div className="flex p-3 ">
-        <Link href={'/'} className="text-black text-xl font-bold max-lg:text-base max-lg:whitespace-normal max-lg:text-center">Exclusive Buy</Link>
+        <Link href={'/'} className="text-black text-xl font-bold max-lg:text-base max-lg:whitespace-normal max-lg:text-center headerLogo">Exclusive Buy</Link>
       </div>
 
       <div className="flex p-3 items-center justify-between max-lg:p-1 max-md:hidden">
@@ -71,11 +72,11 @@ export default function Header() {
         <div className="flex p-3 items-center justify-between ml-12 max-lg:p-1 max-lg:ml-7">
           <div className='flex justify-center items-center p-3 relative'>
             <Link href={'/cart'}>{cartIcon}</Link>
-            <p className='absolute top-0 bg-red-700 px-1.5 left-2 rounded-full text-sm text-white'>{cartItemsQuantity}</p>
+            <motion.p animate={{ scale: [1, 1.2, 1], }} transition={{ duration: 0.3 }} key={cartItemsQuantity} className='absolute top-0 bg-red-700 px-1.5 left-2 rounded-full text-sm text-white'>{cartItemsQuantity}</motion.p>
           </div>
           <div className='flex justify-center items-center relative p-3'>
             <Link href={'/wishList'}>{heartIcon}</Link>
-            <p className='absolute top-0 bg-red-700 px-1.5 left-2 rounded-full text-sm text-white'>{cartCtx.wishList.length}</p>
+            <motion.p animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 0.3 }} key={cartCtx.wishList.length} className='absolute top-0 bg-red-700 px-1.5 left-2 rounded-full text-sm text-white'>{cartCtx.wishList.length}</motion.p>
           </div>
         </div>
 
