@@ -1,9 +1,9 @@
 "use client"
 import { useContext, useEffect, useState } from "react"
 import { addToWishListIcon } from "@/components/itemCard/itemCardIcons"
-import { addToCartIcon } from "@/components/itemCard/itemCardIcons"
-import { bestSelling } from "@/components/itemCard/itemCardIcons"
+import { addToCartIcon, bestSelling, rankStar } from "@/components/itemCard/itemCardIcons"
 import { Cart } from "@/store/Cart"
+import RatingStars from "@/components/ratingStars/ratingStars"
 import Image from "next/image"
 import Link from "next/link"
 import { AnimatePresence, motion } from "framer-motion"
@@ -13,7 +13,8 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
   const [addedToWish, setAddedToWish] = useState(false)
   const [alreadyInWish, setAlreadyInWish] = useState(false)
   const cartCtx = useContext(Cart)
-
+  const categoryRating = Math.round(+categoryItem?.product_star_rating)
+  console.log(categoryRating)
   useEffect(() => {
     if (addedToCart) {
       const timeOut = setTimeout(() => {
@@ -123,8 +124,11 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
         </div>
 
         <div className="flex w-full mb-4 justify-between items-center">
-          <div>
-            <p className="text-gray-500 text-base">Rating: {categoryItem?.product_star_rating ? categoryItem?.product_star_rating : 4.7}</p>
+          <div className="w-full">
+            <div className="flex relative items-center w-full justify-between ">
+              <p className="text-gray-500 text-base">Rating: {categoryItem?.product_star_rating ? categoryItem?.product_star_rating : 4.7} </p>
+              <RatingStars rating={categoryRating} />
+            </div>
             <p className="text-gray-400 text-sm">{categoryItem?.product_num_ratings ? '(' + categoryItem?.product_num_ratings + ')' : '(' + 164 + ')'}</p>
           </div>
           {categoryItem?.is_best_seller && bestSelling}
