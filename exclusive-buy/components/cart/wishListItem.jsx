@@ -2,9 +2,12 @@ import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import Image from "next/image"
 import { bestSelling, notBestSelling } from "../itemCard/itemCardIcons"
+import RatingStars from "@/components/ratingStars/ratingStars"
+
 export default function WishListItem({ item, addToCart, removeWish }) {
 
-  console.log(item)
+  const categoryRating = Math.round(+item?.product_star_rating)
+
 
   return (
     <AnimatePresence>
@@ -20,9 +23,13 @@ export default function WishListItem({ item, addToCart, removeWish }) {
             <p className="mr-2">Best Selling:</p>
             {item?.is_best_seller ? bestSelling : notBestSelling}
           </div>
-          <div className="flex flex-row items-center">
+          <div className="flex flex-row mb-2 items-center">
             <p className="text-gray-500 mr-2">{item?.product_star_rating}</p>
             <p className="text-gray-500 text-sm">{'(' + item?.product_num_ratings + ')'}</p>
+          </div>
+
+          <div>
+            <RatingStars rating={categoryRating} />
           </div>
         </div>
         <div className="flex text-nowrap items-center justify-around">
