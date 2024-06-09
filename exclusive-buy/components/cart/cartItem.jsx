@@ -12,10 +12,9 @@ export default function CartItem({ item, manageQuantity }) {
     itemPrice = parseInt(fixedPrice) * item?.quantity
   }
 
-  console.log(item)
   return (
     <AnimatePresence>
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="border shadow-sm p-3 w-4/5 flex justify-around items-center rounded-lg max-md:w-full max-[460px]:flex-col">
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="border shadow-sm p-3 w-4/5 flex justify-around items-center rounded-lg max-md:w-full max-[460px]:flex-col hover:border-red-400 hover:shadow-red-400">
         <div className="relative h-60 w-2/5 mr-3">
           {item?.deal_photo && <Image src={item.deal_photo} fill style={{ objectFit: 'contain' }} alt="Product Image" />}
           {item?.product_photo && <Image src={item.product_photo} fill style={{ objectFit: 'contain' }} alt="Product Image" />}

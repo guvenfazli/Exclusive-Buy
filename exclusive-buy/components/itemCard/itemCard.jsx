@@ -14,14 +14,13 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
   const [alreadyInWish, setAlreadyInWish] = useState(false)
   const cartCtx = useContext(Cart)
   const categoryRating = Math.round(+categoryItem?.product_star_rating)
-  console.log(categoryRating)
   useEffect(() => {
     if (addedToCart) {
-      const timeOut = setTimeout(() => {
+      setTimeout(() => {
         setAddedToCart(false)
       }, 1500)
     } else if (addedToWish) {
-      const timeOut = setTimeout(() => {
+      setTimeout(() => {
         setAddedToWish(false)
       }, 1500)
     }
@@ -79,7 +78,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
 
   if (hot && !categoryItem) {
     return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`flex shadow-sm flex-col flex-shrink-0 flex-grow-0 duration-700 ease-in-out justify-between w-1/5 p-4 border max-lg:w-1/4 max-md:w-1/3 max-sm:w-full`}
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`flex shadow-sm flex-col flex-shrink-0 flex-grow-0 duration-700 ease-in-out justify-between w-1/5 p-4 border max-lg:w-1/4 max-md:w-1/3 max-sm:w-full hover:border-red-400 hover:shadow-red-400`}
         style={{ translate: `${page * -100}%` }}>
         <div className="mb-4 relative h-60 w-full">
           {item?.deal_photo && <Image src={item.deal_photo} fill style={{ objectFit: 'contain' }} alt="Product Image" />}
@@ -110,7 +109,7 @@ export default function ItemCard({ item, page, hot, categoryItem }) {
     )
   } else if (!hot && categoryItem) {
     return (
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`flex shadow-sm flex-col flex-shrink-0 flex-grow-0 duration-700 ease-in-out justify-between w-1/5 p-4 border max-lg:w-1/4 max-md:w-1/3 max-sm:w-full`}>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`flex shadow-sm flex-col flex-shrink-0 flex-grow-0 duration-700 ease-in-out justify-between w-1/5 p-4 border max-lg:w-1/4 max-md:w-1/3 max-sm:w-full hover:border-red-400 hover:shadow-red-400`}>
         <div className="mb-4 relative h-60 w-full">
           {categoryItem?.product_photo && <Image src={categoryItem.product_photo} fill style={{ objectFit: 'contain' }} alt="Product Image" />}
         </div>

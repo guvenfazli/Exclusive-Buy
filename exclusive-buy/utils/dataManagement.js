@@ -2,7 +2,7 @@ export default async function fetchDealItems() {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '5d4123168bmsh702951918f786fdp1adaa9jsnc8d0c2a18fcf',
+      'X-RapidAPI-Key': 'e8077b5ceamshb4a4afbf8cbf1f9p1506e0jsn5442204ebfe2',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
@@ -17,7 +17,7 @@ export async function fetchByCategory(category, pageNumber) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '5d4123168bmsh702951918f786fdp1adaa9jsnc8d0c2a18fcf',
+      'X-RapidAPI-Key': 'e8077b5ceamshb4a4afbf8cbf1f9p1506e0jsn5442204ebfe2',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
@@ -32,7 +32,7 @@ export async function fetchDetails(itemId) {
   const options = {
     method: 'GET',
     headers: {
-      'x-rapidapi-key': '5d4123168bmsh702951918f786fdp1adaa9jsnc8d0c2a18fcf',
+      'x-rapidapi-key': 'e8077b5ceamshb4a4afbf8cbf1f9p1506e0jsn5442204ebfe2',
       'x-rapidapi-host': 'real-time-amazon-data.p.rapidapi.com',
       'Content-Type': 'application/json'
     }
@@ -48,11 +48,10 @@ export async function searchProduct(keyWord) {
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '5d4123168bmsh702951918f786fdp1adaa9jsnc8d0c2a18fcf',
+      'X-RapidAPI-Key': 'e8077b5ceamshb4a4afbf8cbf1f9p1506e0jsn5442204ebfe2',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
-  console.log(keyWord)
   const response = await fetch(`https://real-time-amazon-data.p.rapidapi.com/search?query=${keyWord}&page=1&country=US`, options)
   const resData = await response.json()
   const data = resData.data.products
@@ -63,7 +62,7 @@ export async function filterListing(listFilter, priceFilter, page, condition, ke
   const options = {
     method: 'GET',
     headers: {
-      'X-RapidAPI-Key': '5d4123168bmsh702951918f786fdp1adaa9jsnc8d0c2a18fcf',
+      'X-RapidAPI-Key': 'e8077b5ceamshb4a4afbf8cbf1f9p1506e0jsn5442204ebfe2',
       'X-RapidAPI-Host': 'real-time-amazon-data.p.rapidapi.com'
     }
   };
