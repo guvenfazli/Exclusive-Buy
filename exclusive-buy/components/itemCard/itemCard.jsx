@@ -1,12 +1,12 @@
 "use client"
 import { useContext, useEffect, useState } from "react"
-import { addToWishListIcon } from "@/components/itemCard/itemCardIcons"
-import { addToCartIcon, bestSelling, rankStar } from "@/components/itemCard/itemCardIcons"
+import { addToWishListIcon, addToCartIcon, bestSelling } from "@/components/itemCard/itemCardIcons"
+import { AnimatePresence, motion } from "framer-motion"
 import { Cart } from "@/store/Cart"
-import RatingStars from "@/components/ratingStars/ratingStars"
 import Image from "next/image"
 import Link from "next/link"
-import { AnimatePresence, motion } from "framer-motion"
+import RatingStars from "@/components/ratingStars/ratingStars"
+
 export default function ItemCard({ item, page, hot, categoryItem }) {
 
   const [addedToCart, setAddedToCart] = useState(false)

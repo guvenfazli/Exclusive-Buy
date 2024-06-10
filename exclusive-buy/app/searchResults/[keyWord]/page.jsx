@@ -1,12 +1,11 @@
 "use client"
+import { useState, useEffect } from "react"
+import { filterListing } from '@/utils/dataManagement'
+import { nextArrow, prevArrow } from "@/components/itemShowcase/showcaseIcons"
+import { bestSelling } from "@/components/itemCard/itemCardIcons"
 import Results from "@/components/searchResults/resultPage"
 import ResultNavBar from "@/components/NavBar/resultNavBar"
-import { useState, useEffect } from "react"
-import { searchProduct, filterListing } from '@/utils/dataManagement'
 import Loading from "@/components/loading/loading"
-import { nextArrow } from "@/components/itemShowcase/showcaseIcons"
-import { prevArrow } from "@/components/itemShowcase/showcaseIcons"
-import { bestSelling } from "@/components/itemCard/itemCardIcons"
 
 export default function SearchResultPage({ params }) {
 

@@ -1,11 +1,12 @@
 import Image from "next/image"
-import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link";
+import { motion, AnimatePresence } from "framer-motion"
+
 export default function CartItem({ item, manageQuantity }) {
 
   let itemPrice;
 
-  if (item.deal_price) {
+  if (item.deal_price) { //Calculating the totalPrice.
     itemPrice = item?.quantity * item.deal_price?.amount
   } else if (item.product_price) {
     let fixedPrice = item.product_price.replaceAll('$', '')

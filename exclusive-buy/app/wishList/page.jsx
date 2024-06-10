@@ -1,9 +1,10 @@
 "use client"
-import { useState, useContext } from "react"
+import { useContext } from "react"
 import { Cart } from "@/store/Cart"
+import { heartIcon } from "@/components/header/headerIcons"
 import WishListItem from "@/components/cart/wishListItem"
 import Link from "next/link"
-import { heartIcon } from "@/components/header/headerIcons"
+
 export default function WishListPage() {
 
   const cartCtx = useContext(Cart)

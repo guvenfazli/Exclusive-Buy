@@ -1,8 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { phonesIcon, laptopsIcon, camerasIcon, shoesIcon, headphonesIcon } from "./buttonIcons"
-import { phonesActive, laptopsActive, camerasActive, shoesActive, headphonesActive } from "./buttonIcons"
+import { phonesIcon, laptopsIcon, camerasIcon, shoesIcon, headphonesIcon, phonesActive, laptopsActive, camerasActive, shoesActive, headphonesActive } from "./buttonIcons"
 import { nextArrow, prevArrow } from "../itemShowcase/showcaseIcons"
 import CategoryItems from "../categoryItems/categoryItems"
 

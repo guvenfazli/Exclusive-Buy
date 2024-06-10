@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react"
 import { fetchDetails } from "../../utils/dataManagement"
+import { bestSelling, notBestSelling } from "@/components/itemCard/itemCardIcons"
 import Image from "next/image"
 import Link from "next/link"
 import Loading from "../loading/loading"
-import { bestSelling, notBestSelling } from "@/components/itemCard/itemCardIcons"
 import RatingStars from "../ratingStars/ratingStars"
+
 export default function SimilarProducts({ similarItems }) {
 
   const [product, setProduct] = useState()

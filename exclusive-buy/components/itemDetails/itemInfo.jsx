@@ -3,14 +3,15 @@
 import { useEffect, useState, useContext } from "react"
 import { Cart } from "@/store/Cart"
 import { fetchDetails } from "../../utils/dataManagement"
+import { motion } from "framer-motion"
+import { bestSelling, notBestSelling } from "../itemCard/itemCardIcons"
 import Image from "next/image"
 import RatingStars from "@/components/ratingStars/ratingStars"
 import SimilarProducts from "./SimilarProducts"
 import Loading from "../loading/loading"
-import { motion } from "framer-motion"
-import { bestSelling, notBestSelling } from "../itemCard/itemCardIcons"
-export default function ItemInfo({ itemId }) {
 
+export default function ItemInfo({ itemId }) {
+  /* S T A T E S */
   const [product, setProduct] = useState()
   const [similarItems, setSimilarItems] = useState()
   const [itemSpecs, setItemSpecs] = useState()
@@ -18,7 +19,8 @@ export default function ItemInfo({ itemId }) {
   const [loading, setLoading] = useState(false)
   const [alreadyInWish, setAlreadyInWish] = useState(false)
   const [addedToWish, setAddedToWish] = useState(false)
-  const itemPhotos = product?.product_photos.map((img) => img)
+  /* S T A T E S */
+  const itemPhotos = product?.product_photos.map((img) => img) // Creating array to render photos.
   const cartCtx = useContext(Cart)
 
   function changeItemPhoto(imgIndex) {
@@ -79,7 +81,7 @@ export default function ItemInfo({ itemId }) {
 
   const categoryRating = Math.round(+product?.product_star_rating)
 
-
+  console.log(product)
   return (
     <div className="w-full">
       {loading ? <Loading /> :

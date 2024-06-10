@@ -1,12 +1,12 @@
 "use client"
 import { useEffect, useState } from "react"
+import { nextArrow, prevArrow } from "./showcaseIcons"
+import { motion } from "framer-motion"
 import fetchDealItems from "@/utils/dataManagement"
 import ItemCard from "../itemCard/itemCard"
-import { nextArrow } from "./showcaseIcons"
-import { prevArrow } from "./showcaseIcons"
 import NavBar from "@/components/NavBar/navbar"
 import Loading from "@/components/loading/loading"
-import { motion } from "framer-motion"
+
 export default function ItemShowcase() {
   const [products, setProducts] = useState()
   const [page, setPage] = useState(0)

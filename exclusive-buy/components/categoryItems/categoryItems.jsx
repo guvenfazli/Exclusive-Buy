@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { fetchByCategory } from "../../utils/dataManagement"
 import ItemCard from "../itemCard/itemCard"
 import Loading from "@/components/loading/loading"
+
 export default function CategoryItems({ category, pageNumber }) {
 
   const [categoryData, setCategoryData] = useState()

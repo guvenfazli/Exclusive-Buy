@@ -1,9 +1,9 @@
 "use client"
 import { useContext, useEffect, useState } from "react"
 import { Cart } from "@/store/Cart"
+import { cartIcon } from "@/components/header/headerIcons"
 import CartItem from "@/components/cart/cartItem"
 import CartNavBar from "@/components/NavBar/cartNavBar"
-import { cartIcon } from "@/components/header/headerIcons"
 import Link from "next/link"
 
 export default function CartPage() {
@@ -12,7 +12,7 @@ export default function CartPage() {
   const [totalPrice, setTotalPrice] = useState(0)
 
   useEffect(() => {
-    setTotalPrice(() => {
+    setTotalPrice(() => { // Seting the total price for cart.
       const deal = cartCtx.cart.filter((item) => item.deal_price)
       const dealPrices = deal.map((price) => parseFloat(price.deal_price.amount) * price.quantity)
       const dealSum = dealPrices.reduce((a, b) => a + b, 0)

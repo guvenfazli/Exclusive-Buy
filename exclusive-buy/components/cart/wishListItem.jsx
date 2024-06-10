@@ -1,12 +1,12 @@
-import { motion, AnimatePresence } from "framer-motion"
+import RatingStars from "@/components/ratingStars/ratingStars"
 import Link from "next/link"
 import Image from "next/image"
+import { motion, AnimatePresence } from "framer-motion"
 import { bestSelling, notBestSelling } from "../itemCard/itemCardIcons"
-import RatingStars from "@/components/ratingStars/ratingStars"
 
 export default function WishListItem({ item, addToCart, removeWish }) {
 
-  const categoryRating = Math.round(+item?.product_star_rating)
+  const categoryRating = Math.round(+item?.product_star_rating) // Rounding rating for stars.
 
 
   return (

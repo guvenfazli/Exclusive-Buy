@@ -1,21 +1,19 @@
 "use client"
 import { useContext, useEffect, useRef, useState } from 'react'
-import { searchGlass } from './headerIcons'
-import { cartIcon } from './headerIcons'
-import { heartIcon } from './headerIcons'
+import { searchGlass, cartIcon, heartIcon } from './headerIcons'
 import { searchProduct } from '@/utils/dataManagement'
 import { Cart } from '@/store/Cart'
-import { motion } from 'framer-motion'
+import { useRouter } from 'next/navigation'
+import { AnimatePresence, motion } from 'framer-motion'
 import SearchResults from "@/components/searchResults/searchResults"
 import Link from 'next/link'
-import { AnimatePresence } from 'framer-motion'
 import SearchLoader from "@/components/loading/searchLoader"
-import { useRouter } from 'next/navigation'
+
 export default function Header() {
   const router = useRouter()
   const cartCtx = useContext(Cart)
   const cartQuantity = cartCtx.cart.map((item) => item.quantity)
-  const cartItemsQuantity = cartQuantity.reduce((a, b) => a + b, 0)
+  const cartItemsQuantity = cartQuantity.reduce((a, b) => a + b, 0) // Sum Quantity
 
   /* S T A T E S */
   const [keyWord, setKeyWord] = useState('')
@@ -27,10 +25,7 @@ export default function Header() {
   const searchWord = useRef()
 
   function setSearchWord() {
-    setTimeout(() => { setKeyWord(searchWord.current?.value) }, 1500)
-
-
-
+    setTimeout(() => { setKeyWord(searchWord.current?.value) }, 1500) // Debouncing the search keys.
   }
 
   useEffect(() => {
