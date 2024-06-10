@@ -10,7 +10,7 @@ export default function NavBar() {
       <Link href={'/searchResults/Toys'} className="w-full text-lg">Toys</Link>
       <Link href={'/searchResults/Lifestyle'} className="w-full text-lg">Lifestyle</Link>
       <Link href={'/searchResults/Sports'} className="w-full text-lg">Sports</Link>
-      <Link href={'/searchResults/Baby'} className="w-full text-lg">Baby's</Link>
+      <Link href={'/searchResults/Baby'} className="w-full text-lg">Baby&apos;s</Link>
       <Link href={'/searchResults/Kitchen'} className="w-full text-lg">Kitchen</Link>
       <Link href={'/searchResults/Shoes'} className="w-full text-lg">Shoes</Link>
       <Link href={'/searchResults/TV'} className="w-full text-lg">TVs</Link>
