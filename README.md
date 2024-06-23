@@ -7,6 +7,7 @@ This is a highly optimized and responsive ecommerce site built with React, Next.
 - **Highly Optimized Performance:** The application is designed to work efficiently on all systems, ensuring quick load times and smooth user experiences.
 - **Responsive Design:** The site is fully responsive, providing a seamless experience across all device sizes, from mobile phones to desktop computers.
 - **Cart and Wishlist System:** Users can easily add products to their cart or wishlist, with functionality to view and manage these lists.
+- **State Management with React Context API:** The application leverages the React Context API for efficient and scalable state management. This allows for easy data sharing across components without the need for prop drilling, enhancing the maintainability and scalability of the codebase.
 - **Intelligent Product Search:** The search system is optimized to provide accurate and fast search results, helping users find products quickly and easily.
 - **Smooth Animations:** The site features smooth animations that enhance the user interface, making it more visually appealing.
 - **Product Filtering:** The product search screen includes various filtering options, allowing users to narrow down their search based on different criteria.
