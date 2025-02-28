@@ -54,6 +54,7 @@ export default function CategoryButtons() {
 
       </div>
 
+
       <div className="w-full flex flex-col">
         <div className="flex w-full mb-3 p-3 justify-end items-center">
           <button disabled={pageNumber === 1} onClick={() => navigatePage('-')} className="p-1 bg-red-600 rounded-full disabled:bg-red-400">{prevArrow}</button>
